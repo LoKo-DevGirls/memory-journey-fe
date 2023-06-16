@@ -1,44 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
-// TODO: Move this to Backend for the security
-import { Configuration, OpenAIApi, Model } from "openai";
-const configuration = new Configuration({
-    organization: "org-98JUxKH77FiK3YYBOr0PCzue",
-    apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
+import { useWhisper } from '@chengsokdara/use-whisper'
 
 function Recoding() {
-  
-  useEffect(() => {
-
-    // TODO: Move this to Backend
-    const fetchCompletion = async () => {
-      try {
-        const completion = await openai.createCompletion({
-          model: "text-davinci-003",
-          prompt: "Hello world",
-        });
-        console.log(completion.data.choices[0].text);
-      } catch (error: any) {
-        if (error.response) {
-          console.log(error.response.status);
-          console.log(error.response.data);
-        } else {
-          console.log(error.message);
-        }
-      }
-    };
-
-    fetchCompletion();
-    }, []);
-
+  const {
+    recording,
+    speaking,
+    transcript,
+    transcribing,
+    pauseRecording,
+    startRecording,
+    stopRecording,
+  } = useWhisper({
+    apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+  })
+ 
   return (
-    <>
-      <h1>Recoding</h1>
-      
-    </>
+    <div>
+      <p>Recording: {recording}</p>
+      <p>Speaking: {speaking}</p>
+      <p>Transcripting: {transcribing}</p>
+      <p>Transcribed Text: {transcript.text}</p>
+      <button onClick={() => startRecording()}>Start</button>
+      <button onClick={() => pauseRecording()}>Pause</button>
+      <button onClick={() => stopRecording()}>Stop</button>
+    </div>
   )
 }
 
