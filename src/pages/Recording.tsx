@@ -41,10 +41,11 @@ function Recording() {
       <p>Speaking: {speaking}</p>
       <p>Transcripting: {transcribing}</p> */}
       <p>Transcribed Text: {transcript.text}</p>
-      <button onClick={() => startRecording()}>Start</button>
-      <button onClick={() => pauseRecording()}>Pause</button>
-      <button onClick={() => stopRecording()}>Stop</button>
-
+      <div className='buttons-container'>
+        <button onClick={() => startRecording()}>Start</button>
+        <button onClick={() => pauseRecording()}>Pause</button>
+        <button onClick={() => stopRecording()}>Stop</button>
+      </div>
       <button onClick={() => onSubmitButtonClick()} disabled={!transcript.text}>Submit</button>
     </div>
   )

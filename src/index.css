@@ -50,6 +50,9 @@ button {
 button:hover {
   border-color: #646cff;
 }
+button:disabled:hover {
+  border-color: transparent;
+}
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -66,4 +69,11 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
