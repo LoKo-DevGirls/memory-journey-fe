@@ -3,7 +3,7 @@ import { useWhisper } from '@chengsokdara/use-whisper'
 
 axios.defaults.baseURL = import.meta.env.VITE_BE_URL;
 
-function Recoding() {
+function Recording() {
   const {
     recording,
     speaking,
@@ -50,4 +50,4 @@ function Recoding() {
   )
 }
 
-export default Recoding
+export default Recording

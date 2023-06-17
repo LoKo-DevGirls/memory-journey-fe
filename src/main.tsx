@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import App from './App.tsx';
 import Archive from './pages/Archive.tsx';
-import Recoding from './pages/Recoding.tsx';
+import Recording from './pages/Recording.tsx';
 import Visualisation from './pages/Visualisation.tsx';
 import './index.css';
 
@@ -22,8 +22,8 @@ const router = createBrowserRouter([
     element: <Archive />,
   },
   {
-    path: "/recoding",
-    element: <Recoding />,
+    path: "/recording",
+    element: <Recording />,
   },
   {
     path: "/visualisation",
