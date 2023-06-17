@@ -6,5 +6,6 @@ export default defineConfig({
   plugins: [react()],
   define: {
     'process.env': {...process.env}
-  }
+  },
+  preview: { port: 8085 }
 })

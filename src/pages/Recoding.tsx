@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useWhisper } from '@chengsokdara/use-whisper'
 
@@ -38,9 +37,9 @@ function Recoding() {
 
   return (
     <div>
-      <p>Recording: {recording}</p>
+      {/* <p>Recording: {recording}</p>
       <p>Speaking: {speaking}</p>
-      <p>Transcripting: {transcribing}</p>
+      <p>Transcripting: {transcribing}</p> */}
       <p>Transcribed Text: {transcript.text}</p>
       <button onClick={() => startRecording()}>Start</button>
       <button onClick={() => pauseRecording()}>Pause</button>
