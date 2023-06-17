@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import App from './App.tsx';
+// import App from './App.tsx';
 import Archive from './pages/Archive.tsx';
 import Recording from './pages/Recording.tsx';
 import Visualisation from './pages/Visualisation.tsx';
