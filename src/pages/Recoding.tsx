@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useWhisper } from '@chengsokdara/use-whisper'
 
+axios.defaults.baseURL = import.meta.env.VITE_BE_URL;
+
 function Recoding() {
   const {
     recording,
@@ -14,7 +16,22 @@ function Recoding() {
   } = useWhisper({
     apiKey: import.meta.env.VITE_OPENAI_API_KEY,
   })
- 
+  
+  const onSubmitButtonClick = () => {
+    const transcriptedText = transcript.text || 'test'
+    postTranscriptedText(transcriptedText);
+  }
+
+  const postTranscriptedText = (text: string) => {
+    axios
+      .post('memory',{
+        content: text
+      })
+      .then((response) => {
+        console.log('response: ', response)
+    })
+  }
+
   return (
     <div>
       <p>Recording: {recording}</p>
@@ -24,6 +41,8 @@ function Recoding() {
       <button onClick={() => startRecording()}>Start</button>
       <button onClick={() => pauseRecording()}>Pause</button>
       <button onClick={() => stopRecording()}>Stop</button>
+
+      <button onClick={() => onSubmitButtonClick()} disabled={!transcript.text}>Submit</button>
     </div>
   )
 }
