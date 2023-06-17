@@ -14,9 +14,12 @@ function Recording() {
     stopRecording,
   } = useWhisper({
     apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+    streaming: true,
+    removeSilence: true,
   })
   
   const onSubmitButtonClick = () => {
+    // console.log('Recorded audio:',transcript.blob)
     const transcriptedText = transcript.text || 'test'
     postTranscriptedText(transcriptedText);
   }
