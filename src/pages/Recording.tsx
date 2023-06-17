@@ -5,10 +5,10 @@ axios.defaults.baseURL = import.meta.env.VITE_BE_URL;
 
 function Recording() {
   const {
-    recording,
-    speaking,
+    // recording,
+    // speaking,
     transcript,
-    transcribing,
+    // transcribing,
     pauseRecording,
     startRecording,
     stopRecording,
