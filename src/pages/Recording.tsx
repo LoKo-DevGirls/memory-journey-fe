@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { useWhisper } from '@chengsokdara/use-whisper'
+import { useWhisper } from '@chengsokdara/use-whisper';
+import styles from '../styles/Recording.module.scss';
 
 axios.defaults.baseURL = import.meta.env.VITE_BE_URL;
 
@@ -39,12 +40,12 @@ function Recording() {
   }
 
   return (
-    <div>
+    <div className={styles.recording}>
       {/* <p>Recording: {recording}</p>
       <p>Speaking: {speaking}</p>
       <p>Transcripting: {transcribing}</p> */}
       <p>Transcribed Text: {transcript.text}</p>
-      <div className='buttons-container'>
+      <div>
         <button onClick={() => startRecording()}>Start</button>
         <button onClick={() => pauseRecording()}>Pause</button>
         <button onClick={() => stopRecording()}>Stop</button>
