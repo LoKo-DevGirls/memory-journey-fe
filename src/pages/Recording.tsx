@@ -40,17 +40,21 @@ function Recording() {
   }
 
   return (
-    <div className={styles.recording}>
+    <div className={styles.recordingContainer}>
       {/* <p>Recording: {recording}</p>
       <p>Speaking: {speaking}</p>
       <p>Transcripting: {transcribing}</p> */}
-      <p>Transcribed Text: {transcript.text}</p>
-      <div>
-        <button onClick={() => startRecording()}>Start</button>
-        <button onClick={() => pauseRecording()}>Pause</button>
-        <button onClick={() => stopRecording()}>Stop</button>
+      <p className={styles.text}>
+        {transcript.text}
+      </p>
+      <div className={styles.buttonsContainer}>
+        <div>
+          <button onClick={() => startRecording()}>Start</button>
+          <button onClick={() => pauseRecording()}>Pause</button>
+          <button onClick={() => stopRecording()}>Stop</button>
+        </div>
+        <button onClick={() => onSubmitButtonClick()} disabled={!transcript.text}>Submit</button>
       </div>
-      <button onClick={() => onSubmitButtonClick()} disabled={!transcript.text}>Submit</button>
     </div>
   )
 }
