@@ -1,15 +1,14 @@
 import axios from 'axios';
-import { useWhisper } from '@chengsokdara/use-whisper';
+import { useState } from 'react';
 import styles from '../styles/Recording.module.scss';
+// https://github.com/chengsokdara/use-whisper
+import { useWhisper } from '@chengsokdara/use-whisper';
 
 axios.defaults.baseURL = import.meta.env.VITE_BE_URL;
 
 function Recording() {
   const {
-    // recording,
-    // speaking,
     transcript,
-    // transcribing,
     pauseRecording,
     startRecording,
     stopRecording,
@@ -19,9 +18,10 @@ function Recording() {
     removeSilence: true,
   })
   
+  const [transcriptedText, setTranscriptedText] = useState('')
+
   const onSubmitButtonClick = () => {
     // console.log('Recorded audio:',transcript.blob)
-    const transcriptedText = transcript.text || 'test'
     postTranscriptedText(transcriptedText);
   }
 
@@ -32,7 +32,7 @@ function Recording() {
       })
       .then((response) => {
         console.log('response: ', response)
-        // TODO: redirect to visualisation page ?
+        // TODO: redirect to Submit result page
       })
       .catch((error) => {
         console.log(error);
@@ -41,19 +41,26 @@ function Recording() {
 
   return (
     <div className={styles.recordingContainer}>
-      {/* <p>Recording: {recording}</p>
-      <p>Speaking: {speaking}</p>
-      <p>Transcripting: {transcribing}</p> */}
-      <p className={styles.text}>
-        {transcript.text}
-      </p>
+      <input
+        type='text'
+        className={styles.text}
+        defaultValue={transcript.text}
+        onChange={e => setTranscriptedText(e.target.value)}
+      />
+      
       <div className={styles.buttonsContainer}>
         <div>
           <button onClick={() => startRecording()}>Start</button>
           <button onClick={() => pauseRecording()}>Pause</button>
           <button onClick={() => stopRecording()}>Stop</button>
         </div>
-        <button onClick={() => onSubmitButtonClick()} disabled={!transcript.text}>Submit</button>
+        <button
+          type='submit'
+          disabled={!transcript.text}
+          onClick={() => onSubmitButtonClick()}
+        >
+          Submit
+        </button>
       </div>
     </div>
   )

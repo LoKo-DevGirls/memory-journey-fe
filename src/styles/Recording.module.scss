@@ -50,9 +50,15 @@ button {
   font-size: 1.5rem;
   line-height: 2rem;
   color: $text-color;
-  padding: 2rem;
 }
 
 .glitch {
   opacity: 0.25;
+}
+
+input.text {
+  background-color: transparent;
+  border: none;
+  width: 80%;
+  height: 60%;
 }
