@@ -6,16 +6,27 @@ $hightlight-color: #f2f2f2;
 
 .recordingContainer {
   font-family: Courier, monospace;
+  position: relative;
+
+  background: -webkit-radial-gradient(50% 50%, ellipse, $bg-color1 0%, $bg-color2 75%, $bg-color3 100%);
+  background: -moz-radial-gradient(50% 50%, ellipse, $bg-color1 0%, $bg-color2 75%, $bg-color3 100%);
+}
+
+.container {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  position: relative;
+}
 
-  background: -webkit-radial-gradient(50% 50%, ellipse, $bg-color1 0%, $bg-color2 75%, $bg-color3 100%);
-  background: -moz-radial-gradient(50% 50%, ellipse, $bg-color1 0%, $bg-color2 75%, $bg-color3 100%);
+.visible {
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .buttonsContainer {

@@ -19,6 +19,10 @@ function Recording() {
   })
   
   const [transcriptedText, setTranscriptedText] = useState('')
+  const [formResult, setFormResult] = useState({})
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false)
+  const [isFormSelected, setIsFormSelected] = useState(false)
+  const [isVoiceInput, setIsVoiceInput] = useState(false)
 
   const onSubmitButtonClick = () => {
     // console.log('Recorded audio:',transcript.blob)
@@ -32,15 +36,45 @@ function Recording() {
       })
       .then((response) => {
         console.log('response: ', response)
-        // TODO: redirect to Submit result page
+        // TODO: redirect to Submit result
+        setFormResult(response)
+        setIsFormSubmitted(true)
       })
       .catch((error) => {
         console.log(error);
       });
   }
 
-  return (
-    <div className={styles.recordingContainer}>
+  const renderSubmitResult = () => {
+    // const {
+    //   text,
+    //   score
+    // } = formResult
+    const text = 'test'
+    const score = [123, 456, 789]
+
+    const resetForm = () => {
+      setIsFormSubmitted(false)
+      setIsFormSelected(false)
+    }
+
+    return (
+      <div className={`${styles.container} ${isFormSubmitted ? styles.visible : styles.hidden}`}>
+        <p><b>Success!</b></p>
+        <p>submitted result: </p>
+        <p>{text}</p>
+        <p>{score}</p>
+
+        <div>
+          <button type='button' onClick={resetForm}>Try again</button>
+          <a href='/'>Back to home</a>
+        </div>
+      </div>
+    )
+  }
+
+  const renderForm = (isVoiceInput: boolean) => (
+    <div className={`${styles.container} ${isFormSelected ? styles.visible : styles.hidden} ${isFormSubmitted ? styles.hidden : styles.visible}`}>
       <input
         type='text'
         className={styles.text}
@@ -49,19 +83,36 @@ function Recording() {
       />
       
       <div className={styles.buttonsContainer}>
-        <div>
+        <div className={styles.recordingController}>
           <button onClick={() => startRecording()}>Start</button>
           <button onClick={() => pauseRecording()}>Pause</button>
           <button onClick={() => stopRecording()}>Stop</button>
         </div>
         <button
           type='submit'
-          disabled={!transcript.text}
+          disabled={!transcriptedText}
           onClick={() => onSubmitButtonClick()}
         >
           Submit
         </button>
       </div>
+    </div>
+  )
+  
+  const renderIntro = () => {
+    return (
+      <div className={`${styles.container} ${isFormSelected ? styles.hidden : styles.visible}`}>
+        Intro
+        <button onClick={() => setIsFormSelected(true)}>Select form</button>
+      </div>
+    )
+  }
+
+  return (
+    <div className={`${styles.recordingContainer} ${styles.container}`}>
+      {renderForm(isVoiceInput)}
+      {renderIntro()}
+      {renderSubmitResult()}
     </div>
   )
 }
