@@ -2,7 +2,8 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import Archive from './pages/Archive.tsx';
 import Recording from './pages/Recording.tsx';
-import Visualisation from './pages/Visualisation.tsx';
+import Research from './pages/Research.tsx';
+import Landing from './pages/Landing.tsx';
 import './index.css';
 import {
   createBrowserRouter,
@@ -12,7 +13,7 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Recording />,
+    element: <Landing />,
   },
   {
     path: "/archive",
@@ -23,8 +24,8 @@ const router = createBrowserRouter([
     element: <Recording />,
   },
   {
-    path: "/visualisation",
-    element: <Visualisation />,
+    path: "/research",
+    element: <Research />,
   },
 ]);
 
