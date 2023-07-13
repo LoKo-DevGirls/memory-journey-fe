@@ -22,7 +22,7 @@ function Recording() {
   const [formResult, setFormResult] = useState({})
   const [isFormSubmitted, setIsFormSubmitted] = useState(false)
   const [isFormSelected, setIsFormSelected] = useState(false)
-  const [isVoiceInput, setIsVoiceInput] = useState(false)
+  const [selectedForm, setSelectedForm] = useState('voiceInput')
 
   const onSubmitButtonClick = () => {
     // console.log('Recorded audio:',transcript.blob)
@@ -73,45 +73,61 @@ function Recording() {
     )
   }
 
-  const renderForm = (isVoiceInput: boolean) => (
-    <div className={`${styles.container} ${isFormSelected ? styles.visible : styles.hidden} ${isFormSubmitted ? styles.hidden : styles.visible}`}>
-      <input
-        type='text'
-        className={styles.text}
-        defaultValue={transcript.text}
-        onChange={e => setTranscriptedText(e.target.value)}
-      />
-      
-      <div className={styles.buttonsContainer}>
-        <div className={styles.recordingController}>
-          <button onClick={() => startRecording()}>Start</button>
-          <button onClick={() => pauseRecording()}>Pause</button>
-          <button onClick={() => stopRecording()}>Stop</button>
+  const renderForm = (selectedForm: string) => {
+    const isVoiceInput = selectedForm === 'voiceInput';
+
+    return (
+      <div className={`${styles.container} ${isFormSelected ? styles.visible : styles.hidden} ${isFormSubmitted ? styles.hidden : styles.visible}`}>
+        <input
+          type='text'
+          className={styles.text}
+          defaultValue={transcript.text}
+          onChange={e => setTranscriptedText(e.target.value)}
+        />
+        
+        <div className={styles.buttonsContainer}>
+          <div className={`${styles.recordingController} ${!isVoiceInput && styles.hidden}`}>
+            <button onClick={() => startRecording()}>Start</button>
+            <button onClick={() => pauseRecording()}>Pause</button>
+            <button onClick={() => stopRecording()}>Stop</button>
+          </div>
+          <button
+            type='submit'
+            disabled={!transcriptedText}
+            onClick={() => onSubmitButtonClick()}
+          >
+            Submit
+          </button>
         </div>
-        <button
-          type='submit'
-          disabled={!transcriptedText}
-          onClick={() => onSubmitButtonClick()}
-        >
-          Submit
-        </button>
       </div>
-    </div>
-  )
+    )
+  }
   
   const renderIntro = () => {
+    const setForm = (type: string) => {
+      setIsFormSelected(true)
+      setSelectedForm(type)
+    }
     return (
       <div className={`${styles.container} ${isFormSelected ? styles.hidden : styles.visible}`}>
-        Intro
-        <button onClick={() => setIsFormSelected(true)}>Select form</button>
+        <p>Intro</p>
+        <div>
+          <input type="range" />
+          <input type="range" />
+          <input type="range" />
+        </div>
+        <div>
+          <button onClick={() => setForm('voiceInput')}>Speech</button>
+          <button onClick={() => setForm('textInput')}>Text</button>
+        </div>
       </div>
     )
   }
 
   return (
     <div className={`${styles.recordingContainer} ${styles.container}`}>
-      {renderForm(isVoiceInput)}
       {renderIntro()}
+      {renderForm(selectedForm)}
       {renderSubmitResult()}
     </div>
   )
