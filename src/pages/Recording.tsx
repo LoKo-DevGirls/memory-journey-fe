@@ -62,6 +62,14 @@ function Recording() {
     const resetForm = () => {
       setIsFormSubmitted(false)
       setIsFormSelected(false)
+      setFormResult({dreamText: ''})
+      setDensityScore({
+        age: '',
+        temperature: '',
+        density: ''
+      })
+      setSelectedForm('')
+      setTranscriptedText('')
     }
     // TODO: Copy update
     return (
