@@ -22,11 +22,13 @@ $hightlight-color: #f2f2f2;
 }
 
 .visible {
-  visibility: visible;
+  // visibility: visible;
+  display: inherit;
 }
 
 .hidden {
-  visibility: hidden;
+  // visibility: hidden;
+  display: none;
 }
 
 .buttonsContainer {
@@ -43,13 +45,14 @@ $hightlight-color: #f2f2f2;
   }
 }
 
-
 button {
   font-family: inherit;
   background-color: transparent;
   color: $text-color;
   border: none;
   padding: 0.5rem;
+  font-size: 16px;
+  cursor: pointer;
 
   &:hover {
     color: $hightlight-color;
@@ -71,5 +74,34 @@ input.text {
   background-color: transparent;
   border: none;
   width: 80%;
-  height: 60%;
+  height: 50%;
+}
+
+.inputContainer {
+  margin: 2rem 0;
+  display: flex;
+  p {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+}
+
+input[type="range"] {
+  appearance: slider-vertical;
+  cursor: pointer;
+  accent-color: $text-color;
+}
+
+input[type="text"] {
+  box-shadow: 0 0 10px rgba($hightlight-color, 0.3);
+  padding: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: $text-color;
+  &:hover {
+    color: $hightlight-color;
+  }
 }

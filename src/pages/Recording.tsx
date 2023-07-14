@@ -84,8 +84,8 @@ function Recording() {
 
         <div>
           <button type='button' onClick={resetForm}>Try again</button>
-          <a href='/'>Back to home</a>
         </div>
+          <a href='/'>Back to home</a>
       </div>
     )
   }
@@ -132,7 +132,7 @@ function Recording() {
     return (
       <div className={`${styles.container} ${isFormSelected ? styles.hidden : styles.visible}`}>
         <p>Intro</p>
-        <div>
+        <div className={styles.inputContainer}>
           <p>
             <label htmlFor="age">Age:</label>
             <input type="range" id="age" name="age" min="0" max="100" step="1" onChange={handleChange} />
