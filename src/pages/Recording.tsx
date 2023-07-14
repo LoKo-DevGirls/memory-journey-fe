@@ -6,6 +6,16 @@ import { useWhisper } from '@chengsokdara/use-whisper';
 
 axios.defaults.baseURL = import.meta.env.VITE_BE_URL;
 
+interface DreamForm {
+  dreamText: string | any
+}
+// TODO: need to confirm
+interface DensityScore {
+  age: string
+  temperature: string
+  density: string
+}
+
 function Recording() {
   const {
     transcript,
@@ -19,7 +29,12 @@ function Recording() {
   })
   
   const [transcriptedText, setTranscriptedText] = useState('')
-  const [formResult, setFormResult] = useState({})
+  const [formResult, setFormResult] = useState<DreamForm>()
+  const [densityScore, setDensityScore] = useState<DensityScore>({
+    age: '',
+    temperature: '',
+    density: ''
+  })
   const [isFormSubmitted, setIsFormSubmitted] = useState(false)
   const [isFormSelected, setIsFormSelected] = useState(false)
   const [selectedForm, setSelectedForm] = useState('voiceInput')
@@ -31,13 +46,11 @@ function Recording() {
 
   const postTranscriptedText = (text: string) => {
     axios
-      .post('memory',{
+      .post('memory', {
         content: text
       })
       .then((response) => {
-        console.log('response: ', response)
-        // TODO: redirect to Submit result
-        setFormResult(response)
+        setFormResult({dreamText: response})
         setIsFormSubmitted(true)
       })
       .catch((error) => {
@@ -46,24 +59,20 @@ function Recording() {
   }
 
   const renderSubmitResult = () => {
-    // const {
-    //   text,
-    //   score
-    // } = formResult
-    const text = 'test'
-    const score = [123, 456, 789]
-
     const resetForm = () => {
       setIsFormSubmitted(false)
       setIsFormSelected(false)
     }
-
+    // TODO: Copy update
     return (
       <div className={`${styles.container} ${isFormSubmitted ? styles.visible : styles.hidden}`}>
         <p><b>Success!</b></p>
         <p>submitted result: </p>
-        <p>{text}</p>
-        <p>{score}</p>
+        <p>{formResult?.dreamText}</p>
+        <br />
+        <p>{densityScore?.age}</p>
+        <p>{densityScore?.temperature}</p>
+        <p>{densityScore?.density}</p>
 
         <div>
           <button type='button' onClick={resetForm}>Try again</button>
@@ -104,21 +113,35 @@ function Recording() {
   }
   
   const renderIntro = () => {
-    const setForm = (type: string) => {
+    const setFormType = (type: string) => {
       setIsFormSelected(true)
       setSelectedForm(type)
     }
+    const handleChange = (e: any) => {
+      setDensityScore({ ...densityScore, [e.target?.name]: e.target?.value });
+    }
+
     return (
       <div className={`${styles.container} ${isFormSelected ? styles.hidden : styles.visible}`}>
         <p>Intro</p>
         <div>
-          <input type="range" />
-          <input type="range" />
-          <input type="range" />
+          <p>
+            <label htmlFor="age">Age:</label>
+            <input type="range" id="age" name="age" min="0" max="100" step="1" onChange={handleChange} />
+          </p>
+          <p>
+            <label htmlFor="temperature">Temperature:</label>
+            <input type="range" id="temperature" name="temperature" min="0" max="100" step="1" onChange={handleChange} />
+          </p>
+          <p>
+            <label htmlFor="density">Density:</label>
+            <input type="range" id="density" name="density" min="0" max="100" step="1" onChange={handleChange} />
+          </p>
+
         </div>
         <div>
-          <button onClick={() => setForm('voiceInput')}>Speech</button>
-          <button onClick={() => setForm('textInput')}>Text</button>
+          <button onClick={() => setFormType('voiceInput')}>Speech</button>
+          <button onClick={() => setFormType('textInput')}>Text</button>
         </div>
       </div>
     )
