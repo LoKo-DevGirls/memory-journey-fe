@@ -162,31 +162,39 @@ function Recording() {
         <div className={styles.inputContainer}>
           <p>
             <label htmlFor="time">Time</label>
-            <input type="range" id="time" name="time" min="0" max="100" step="1" list='timeValues' onChange={handleChange} />
+            <div className={styles.inputWrapper}>
+              <input type="range" id="time" name="time" min="0" max="100" step="1" list='timeValues' onChange={handleChange} />
+
+              <datalist id="timeValues">
+                <option value="0" label="recent"></option>
+                <option value="100" label="old"></option>
+              </datalist>
+            </div>
             <p>Is that memory recent or old?</p>
             
-            <datalist id="timeValues">
-              <option value="0" label="recent"></option>
-              <option value="100" label="old"></option>
-            </datalist>
           </p>
           <p>
             <label htmlFor="feeling">Feeling</label>
-            <input type="range" id="feeling" name="feeling" min="0" max="100" step="1" list='feelingValues' onChange={handleChange} />
+            <div className={styles.inputWrapper}>
+              <input type="range" id="feeling" name="feeling" min="0" max="100" step="1" list='feelingValues' onChange={handleChange} />
+              <datalist id="feelingValues">
+                <option value="0" label="bad"></option>
+                <option value="100" label="good"></option>
+              </datalist>
+
+            </div>
             <p>Is it a good memory or is it a bad memory?</p>
-            <datalist id="feelingValues">
-              <option value="0" label="bad"></option>
-              <option value="100" label="good"></option>
-            </datalist>
           </p>
           <p>
             <label htmlFor="consciousness">Consciousness</label>
-            <input type="range" id="consciousness" name="consciousness" min="0" max="100" step="1" list='consciousnessValues' onChange={handleChange} />
+            <div className={styles.inputWrapper}>
+              <input type="range" id="consciousness" name="consciousness" min="0" max="100" step="1" list='consciousnessValues' onChange={handleChange} />
+              <datalist id="consciousnessValues">
+                <option value="0" label="vague"></option>
+                <option value="100" label="vivid"></option>
+              </datalist>
+            </div>
             <p>How vivid is the memory?</p>
-            <datalist id="consciousnessValues">
-              <option value="0" label="vague"></option>
-              <option value="100" label="vivid"></option>
-            </datalist>
           </p>
 
         </div>

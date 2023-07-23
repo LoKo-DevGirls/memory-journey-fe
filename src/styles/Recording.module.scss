@@ -113,3 +113,25 @@ a {
     color: $hightlight-color;
   }
 }
+
+.inputWrapper {
+  position: relative;
+  margin: 1rem 0;
+
+  datalist {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    position: absolute;
+    left: calc(50% + 1rem);
+    top: 0;
+    text-align: left;
+    font-size: 14px;
+    color: #999;
+
+    option {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
