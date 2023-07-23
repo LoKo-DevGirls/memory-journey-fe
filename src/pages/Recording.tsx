@@ -166,8 +166,8 @@ function Recording() {
               <input type="range" id="time" name="time" min="0" max="100" step="1" list='timeValues' onChange={handleChange} />
 
               <datalist id="timeValues">
-                <option value="0" label="recent"></option>
-                <option value="100" label="old"></option>
+                <option value="0" label="old"></option>
+                <option value="100" label="recent"></option>
               </datalist>
             </div>
             <p>Is that memory recent or old?</p>
@@ -190,8 +190,8 @@ function Recording() {
             <div className={styles.inputWrapper}>
               <input type="range" id="consciousness" name="consciousness" min="0" max="100" step="1" list='consciousnessValues' onChange={handleChange} />
               <datalist id="consciousnessValues">
-                <option value="0" label="vague"></option>
-                <option value="100" label="vivid"></option>
+                <option value="0" label="vivid"></option>
+                <option value="100" label="vague"></option>
               </datalist>
             </div>
             <p>How vivid is the memory?</p>
