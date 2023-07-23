@@ -8,12 +8,15 @@ axios.defaults.baseURL = import.meta.env.VITE_BE_URL;
 
 interface DreamForm {
   dreamText: string | any
+  time: number
+  feeling: number
+  consciousness: number
 }
 // TODO: need to confirm
 interface DensityScore {
-  age: string
-  temperature: string
-  density: string
+  time: number
+  feeling: number
+  consciousness: number
 }
 
 function Recording() {
@@ -29,11 +32,16 @@ function Recording() {
   })
   
   const [transcriptedText, setTranscriptedText] = useState('')
-  const [formResult, setFormResult] = useState<DreamForm>()
+  const [formResult, setFormResult] = useState<DreamForm>({
+    dreamText: '',
+    time: 0,
+    feeling: 0,
+    consciousness: 0,
+  })
   const [densityScore, setDensityScore] = useState<DensityScore>({
-    age: '',
-    temperature: '',
-    density: ''
+    time: 0,
+    feeling: 0,
+    consciousness: 0
   })
   const [isFormSubmitted, setIsFormSubmitted] = useState(false)
   const [isFormSelected, setIsFormSelected] = useState(false)
@@ -47,10 +55,24 @@ function Recording() {
   const postTranscriptedText = (text: string) => {
     axios
       .post('memory', {
-        content: text
+        content: text,
+        consciousness: densityScore.consciousness,
+        time: densityScore.time,
+        feeling:  densityScore.feeling,
       })
       .then((response) => {
-        setFormResult({dreamText: response})
+        const {
+          content,
+          time,
+          feeling,
+          consciousness
+        } = response.data
+        setFormResult({
+          dreamText: content,
+          time: time,
+          feeling: feeling,
+          consciousness: consciousness,
+        })
         setIsFormSubmitted(true)
       })
       .catch((error) => {
@@ -62,11 +84,16 @@ function Recording() {
     const resetForm = () => {
       setIsFormSubmitted(false)
       setIsFormSelected(false)
-      setFormResult({dreamText: ''})
+      setFormResult({
+        dreamText: '',
+        time: 0,
+        feeling: 0,
+        consciousness: 0,
+      })
       setDensityScore({
-        age: '',
-        temperature: '',
-        density: ''
+        time: 0,
+        feeling: 0,
+        consciousness: 0
       })
       setSelectedForm('')
       setTranscriptedText('')
@@ -78,9 +105,9 @@ function Recording() {
         <p>submitted result: </p>
         <p>{formResult?.dreamText}</p>
         <br />
-        <p>{densityScore?.age}</p>
-        <p>{densityScore?.temperature}</p>
-        <p>{densityScore?.density}</p>
+        <p>{densityScore?.time}</p>
+        <p>{densityScore?.feeling}</p>
+        <p>{densityScore?.consciousness}</p>
 
         <div>
           <button type='button' onClick={resetForm}>Try again</button>
@@ -134,16 +161,16 @@ function Recording() {
         <p>Intro</p>
         <div className={styles.inputContainer}>
           <p>
-            <label htmlFor="age">Age:</label>
-            <input type="range" id="age" name="age" min="0" max="100" step="1" onChange={handleChange} />
+            <label htmlFor="time">Time:</label>
+            <input type="range" id="time" name="time" min="0" max="100" step="1" onChange={handleChange} />
           </p>
           <p>
-            <label htmlFor="temperature">Temperature:</label>
-            <input type="range" id="temperature" name="temperature" min="0" max="100" step="1" onChange={handleChange} />
+            <label htmlFor="feeling">Feeling:</label>
+            <input type="range" id="feeling" name="feeling" min="0" max="100" step="1" onChange={handleChange} />
           </p>
           <p>
-            <label htmlFor="density">Density:</label>
-            <input type="range" id="density" name="density" min="0" max="100" step="1" onChange={handleChange} />
+            <label htmlFor="consciousness">Consciousness:</label>
+            <input type="range" id="consciousness" name="consciousness" min="0" max="100" step="1" onChange={handleChange} />
           </p>
 
         </div>
