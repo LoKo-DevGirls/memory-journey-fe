@@ -105,9 +105,9 @@ function Recording() {
         <p>submitted result: </p>
         <p>{formResult?.dreamText}</p>
         <br />
-        <p>{densityScore?.time}</p>
-        <p>{densityScore?.feeling}</p>
-        <p>{densityScore?.consciousness}</p>
+        <p>Time: {densityScore?.time}</p>
+        <p>Feeling: {densityScore?.feeling}</p>
+        <p>Consciousness: {densityScore?.consciousness}</p>
 
         <div>
           <button type='button' onClick={resetForm}>Try again</button>
@@ -158,19 +158,21 @@ function Recording() {
 
     return (
       <div className={`${styles.container} ${isFormSelected ? styles.hidden : styles.visible}`}>
-        <p>Intro</p>
         <div className={styles.inputContainer}>
           <p>
-            <label htmlFor="time">Time:</label>
+            <label htmlFor="time">Time</label>
             <input type="range" id="time" name="time" min="0" max="100" step="1" onChange={handleChange} />
+            <p>Think of a memory <br /> How vivid is it?</p>
           </p>
           <p>
-            <label htmlFor="feeling">Feeling:</label>
+            <label htmlFor="feeling">Feeling</label>
             <input type="range" id="feeling" name="feeling" min="0" max="100" step="1" onChange={handleChange} />
+            <p>Is it a good memory? <br /> Or is it a bad memory?</p>
           </p>
           <p>
-            <label htmlFor="consciousness">Consciousness:</label>
+            <label htmlFor="consciousness">Consciousness</label>
             <input type="range" id="consciousness" name="consciousness" min="0" max="100" step="1" onChange={handleChange} />
+            <p>Is that memory recent? <br /> Is it a very long time ago?</p>
           </p>
 
         </div>

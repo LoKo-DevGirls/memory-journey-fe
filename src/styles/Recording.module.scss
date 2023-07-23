@@ -78,12 +78,20 @@ input.text {
 }
 
 .inputContainer {
-  margin: 2rem 0;
+  margin: 2rem 0 6rem;
   display: flex;
   p {
     display: flex;
     align-items: center;
     flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  > p {
+    margin: 0 2rem;
+  }
+  label {
+    margin-top: .5rem;
   }
 }
 
