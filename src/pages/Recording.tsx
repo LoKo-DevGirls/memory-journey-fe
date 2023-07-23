@@ -4,7 +4,8 @@ import styles from '../styles/Recording.module.scss';
 // https://github.com/chengsokdara/use-whisper
 import { useWhisper } from '@chengsokdara/use-whisper';
 
-axios.defaults.baseURL = import.meta.env.VITE_BE_URL;
+const baseUrl = import.meta.env.VITE_BE_URL;
+axios.defaults.baseURL = `https://${baseUrl}`;
 
 interface DreamForm {
   dreamText: string | any
@@ -161,18 +162,31 @@ function Recording() {
         <div className={styles.inputContainer}>
           <p>
             <label htmlFor="time">Time</label>
-            <input type="range" id="time" name="time" min="0" max="100" step="1" onChange={handleChange} />
-            <p>Think of a memory <br /> How vivid is it?</p>
+            <input type="range" id="time" name="time" min="0" max="100" step="1" list='timeValues' onChange={handleChange} />
+            <p>Is that memory recent or old?</p>
+            
+            <datalist id="timeValues">
+              <option value="0" label="recent"></option>
+              <option value="100" label="old"></option>
+            </datalist>
           </p>
           <p>
             <label htmlFor="feeling">Feeling</label>
-            <input type="range" id="feeling" name="feeling" min="0" max="100" step="1" onChange={handleChange} />
-            <p>Is it a good memory? <br /> Or is it a bad memory?</p>
+            <input type="range" id="feeling" name="feeling" min="0" max="100" step="1" list='feelingValues' onChange={handleChange} />
+            <p>Is it a good memory or is it a bad memory?</p>
+            <datalist id="feelingValues">
+              <option value="0" label="bad"></option>
+              <option value="100" label="good"></option>
+            </datalist>
           </p>
           <p>
             <label htmlFor="consciousness">Consciousness</label>
-            <input type="range" id="consciousness" name="consciousness" min="0" max="100" step="1" onChange={handleChange} />
-            <p>Is that memory recent? <br /> Is it a very long time ago?</p>
+            <input type="range" id="consciousness" name="consciousness" min="0" max="100" step="1" list='consciousnessValues' onChange={handleChange} />
+            <p>How vivid is the memory?</p>
+            <datalist id="consciousnessValues">
+              <option value="0" label="vague"></option>
+              <option value="100" label="vivid"></option>
+            </datalist>
           </p>
 
         </div>
