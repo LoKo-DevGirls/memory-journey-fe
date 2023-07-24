@@ -123,8 +123,7 @@ function Recording() {
 
     return (
       <div className={`${styles.container} ${isFormSelected ? styles.visible : styles.hidden} ${isFormSubmitted ? styles.hidden : styles.visible}`}>
-        <input
-          type='text'
+        <textarea
           className={styles.text}
           defaultValue={transcript.text}
           onChange={e => setTranscriptedText(e.target.value)}
@@ -170,7 +169,7 @@ function Recording() {
                 <option value="100" label="recent"></option>
               </datalist>
             </div>
-            <p>Is that memory recent or old?</p>
+            <span>Is that memory recent or old?</span>
             
           </p>
           <p>
@@ -183,7 +182,7 @@ function Recording() {
               </datalist>
 
             </div>
-            <p>Is it a good memory or is it a bad memory?</p>
+            <span>Is it a good memory or is it a bad memory?</span>
           </p>
           <p>
             <label htmlFor="consciousness">Consciousness</label>
@@ -194,7 +193,7 @@ function Recording() {
                 <option value="100" label="vague"></option>
               </datalist>
             </div>
-            <p>How vivid is the memory?</p>
+            <span>How vivid is the memory?</span>
           </p>
 
         </div>

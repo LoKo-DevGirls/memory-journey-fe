@@ -61,7 +61,7 @@ button {
 
 .text {
   text-shadow: 0 0 8px rgba(lighten($text-color, 50%), 0.3);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 2rem;
   color: $text-color;
 }
@@ -70,7 +70,7 @@ button {
   opacity: 0.25;
 }
 
-input.text {
+textarea.text {
   background-color: transparent;
   border: none;
   width: 80%;
@@ -101,7 +101,7 @@ input[type="range"] {
   accent-color: $text-color;
 }
 
-input[type="text"] {
+textarea {
   box-shadow: 0 0 10px rgba($hightlight-color, 0.3);
   padding: 2rem;
 }
