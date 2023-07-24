@@ -24,7 +24,6 @@ interface DensityScore {
 function Recording() {
   const {
     transcript,
-    pauseRecording,
     startRecording,
     stopRecording,
     recording,
@@ -137,9 +136,11 @@ function Recording() {
         
         <div className={styles.buttonsContainer}>
           <div className={`${styles.recordingController} ${!isVoiceInput && styles.hidden}`}>
-            <button onClick={() => startRecording()}>Start</button>
-            <button onClick={() => pauseRecording()}>Pause</button>
-            <button onClick={() => stopRecording()}>Stop</button>
+            {recording 
+              ? <div className={styles.recordingIcon}></div>
+              : <button onClick={() => startRecording()} disabled={recording}>Start</button>
+            }
+            <button onClick={() => stopRecording()} disabled={!recording}>Stop</button>
           </div>
           <button
             type='submit'
