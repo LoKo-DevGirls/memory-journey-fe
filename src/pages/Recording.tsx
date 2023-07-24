@@ -13,7 +13,7 @@ interface DreamForm {
   feeling: number
   consciousness: number
 }
-// TODO: need to confirm
+
 interface DensityScore {
   time: number
   feeling: number
@@ -178,8 +178,8 @@ function Recording() {
             <div className={styles.inputWrapper}>
               <input type="range" id="feeling" name="feeling" min="0" max="100" step="1" list='feelingValues' onChange={handleChange} />
               <datalist id="feelingValues">
-                <option value="0" label="bad"></option>
-                <option value="100" label="good"></option>
+                <option value="0" label="good"></option>
+                <option value="100" label="bad"></option>
               </datalist>
 
             </div>
