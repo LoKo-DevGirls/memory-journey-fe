@@ -27,10 +27,12 @@ function Recording() {
     startRecording,
     stopRecording,
     recording,
-    speaking,
+    // speaking,
+    // transcribing
   } = useWhisper({
     apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-    streaming: true,
+    streaming: true, // TODO: turn off if we want to stop transcribing after sent
+    timeSlice: 1_000,
     removeSilence: true,
   })
   
@@ -51,13 +53,14 @@ function Recording() {
   const [selectedForm, setSelectedForm] = useState('voiceInput')
   const [showLoader, setShowLoader] = useState(false)
 
-  const onSubmitButtonClick = () => {
+  const onSubmitButtonClick = (isVoiceInput: boolean) => {
     // console.log('Recorded audio:',transcript.blob)
     setShowLoader(true);
-    postTranscriptedText(transcriptedText);
+    const data = isVoiceInput ? transcript.text : transcriptedText;
+    postTranscriptedText(data);
   }
 
-  const postTranscriptedText = (text: string) => {
+  const postTranscriptedText = (text: string | undefined) => {
     axios
       .post('memory', {
         content: text,
@@ -104,7 +107,6 @@ function Recording() {
       setSelectedForm('')
       setTranscriptedText('')
     }
-    // TODO: Copy update
     return (
       <div className={`${styles.container} ${isFormSubmitted ? styles.visible : styles.hidden}`}>
         <p><b>Success!</b></p>
@@ -133,7 +135,6 @@ function Recording() {
           defaultValue={transcript.text}
           onChange={e => setTranscriptedText(e.target.value)}
         />
-        
         <div className={styles.buttonsContainer}>
           <div className={`${styles.recordingController} ${!isVoiceInput && styles.hidden}`}>
             {recording 
@@ -144,8 +145,8 @@ function Recording() {
           </div>
           <button
             type='submit'
-            disabled={!transcriptedText}
-            onClick={() => onSubmitButtonClick()}
+            disabled={!transcriptedText && !transcript.text}
+            onClick={() => onSubmitButtonClick(isVoiceInput)}
             className={styles.submitButton}
           >
             {showLoader ? <Loader /> : 'Submit'}
