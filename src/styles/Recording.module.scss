@@ -189,7 +189,7 @@ a {
 	}
 }
 
-.recordingController {
+.recordingController:not(.hidden) {
   display: flex;
 }
 
