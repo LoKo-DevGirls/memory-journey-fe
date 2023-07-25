@@ -111,7 +111,7 @@ function Recording() {
       <div className={`${styles.container} ${isFormSubmitted ? styles.visible : styles.hidden}`}>
         <p><b>Success!</b></p>
         <p>submitted result: </p>
-        <p>{formResult?.dreamText}</p>
+        <p className={styles.resultText}>{formResult?.dreamText}</p>
         <br />
         <p>Time: {densityScore?.time}</p>
         <p>Feeling: {densityScore?.feeling}</p>
