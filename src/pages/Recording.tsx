@@ -74,7 +74,7 @@ function Recording() {
           time,
           feeling,
           consciousness
-        } = response.data;
+        } = response.data.memory;
         setFormResult({
           dreamText: content,
           time: time,
