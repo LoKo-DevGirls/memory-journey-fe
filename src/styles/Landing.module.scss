@@ -73,15 +73,15 @@ $color3: #060612;
   font-smoothing: antialiased;
 
   a {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 }
 
 .paragraph {
   margin: 4rem;
   text-shadow: 0 0 8px rgba(lighten($text-color, 50%), 0.6);
-  font-size: 1.25rem;
-  line-height: 2rem;
+  font-size: 1rem;
+  line-height: 1.25rem;
   color: $text-color;
   
 }
