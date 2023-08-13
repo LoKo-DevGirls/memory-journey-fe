@@ -2,7 +2,8 @@ import { ForceGraph3D } from 'react-force-graph';
 import mockupdata from '../assets/mockupdata.json';
 import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
 
-const extraRenderers = [new CSS2DRenderer()];
+
+const extraRenderers = [new CSS2DRenderer() as any];
 
 // import axios from 'axios';
 import { useRef, useCallback } from 'react';
