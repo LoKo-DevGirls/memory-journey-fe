@@ -7,7 +7,7 @@
       "consciousness": 1,
       "time": 1,
       "feeling": 1,
-      "groupIds": []
+      "groupIds": [4]
     }, {
       "id": 2,
       "content": "Re-engineered fault-tolerant open system",
@@ -15,7 +15,7 @@
       "consciousness": 2,
       "time": 2,
       "feeling": 2,
-      "groupIds": []
+      "groupIds": [1,2]
     }, {
       "id": 3,
       "content": "Versatile scalable complexity",
@@ -23,7 +23,7 @@
       "consciousness": 3,
       "time": 3,
       "feeling": 3,
-      "groupIds": []
+      "groupIds": [1,2]
     }, {
       "id": 4,
       "content": "Versatile well-modulated alliance",
@@ -31,7 +31,7 @@
       "consciousness": 4,
       "time": 4,
       "feeling": 4,
-      "groupIds": []
+      "groupIds": [3,4]
     }, {
       "id": 5,
       "content": "Devolved homogeneous emulation",
@@ -39,7 +39,7 @@
       "consciousness": 5,
       "time": 5,
       "feeling": 5,
-      "groupIds": []
+      "groupIds": [4]
     }, {
       "id": 6,
       "content": "Fully-configurable 24/7 firmware",
@@ -47,7 +47,7 @@
       "consciousness": 6,
       "time": 6,
       "feeling": 6,
-      "groupIds": []
+      "groupIds": [1,2,3]
     }, {
       "id": 7,
       "content": "Innovative secondary intranet",
@@ -55,7 +55,7 @@
       "consciousness": 7,
       "time": 7,
       "feeling": 7,
-      "groupIds": []
+      "groupIds": [3]
     }, {
       "id": 8,
       "content": "Right-sized human-resource customer loyalty",
@@ -63,7 +63,7 @@
       "consciousness": 8,
       "time": 8,
       "feeling": 8,
-      "groupIds": []
+      "groupIds": [1,2]
     }, {
       "id": 9,
       "content": "Multi-tiered contextually-based product",
@@ -71,7 +71,7 @@
       "consciousness": 9,
       "time": 9,
       "feeling": 9,
-      "groupIds": []
+      "groupIds": [4]
     }, {
       "id": 10,
       "content": "Versatile incremental initiative",
@@ -79,7 +79,7 @@
       "consciousness": 10,
       "time": 10,
       "feeling": 10,
-      "groupIds": []
+      "groupIds": [1,3,4]
     }
   ],
   "links": [
