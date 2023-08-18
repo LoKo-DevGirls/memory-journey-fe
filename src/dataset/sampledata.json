@@ -1,0 +1,301 @@
+{
+  "nodes": [
+    {
+      "id": 1,
+      "content": "Right-sized secondary internet solution",
+      "tags": ["birthday"],
+      "consciousness": 1,
+      "time": 1,
+      "feeling": 1,
+      "groupIds": []
+    }, {
+      "id": 2,
+      "content": "Re-engineered fault-tolerant open system",
+      "tags": ["tale", "contribution"],
+      "consciousness": 2,
+      "time": 2,
+      "feeling": 2,
+      "groupIds": []
+    }, {
+      "id": 3,
+      "content": "Versatile scalable complexity",
+      "tags": ["tale", "contribution"],
+      "consciousness": 3,
+      "time": 3,
+      "feeling": 3,
+      "groupIds": []
+    }, {
+      "id": 4,
+      "content": "Versatile well-modulated alliance",
+      "tags": ["fishing", "birthday"],
+      "consciousness": 4,
+      "time": 4,
+      "feeling": 4,
+      "groupIds": []
+    }, {
+      "id": 5,
+      "content": "Devolved homogeneous emulation",
+      "tags": ["birthday"],
+      "consciousness": 5,
+      "time": 5,
+      "feeling": 5,
+      "groupIds": []
+    }, {
+      "id": 6,
+      "content": "Fully-configurable 24/7 firmware",
+      "tags": ["tale", "contribution", "fishing"],
+      "consciousness": 6,
+      "time": 6,
+      "feeling": 6,
+      "groupIds": []
+    }, {
+      "id": 7,
+      "content": "Innovative secondary intranet",
+      "tags": ["fishing"],
+      "consciousness": 7,
+      "time": 7,
+      "feeling": 7,
+      "groupIds": []
+    }, {
+      "id": 8,
+      "content": "Right-sized human-resource customer loyalty",
+      "tags": ["tale", "contribution"],
+      "consciousness": 8,
+      "time": 8,
+      "feeling": 8,
+      "groupIds": []
+    }, {
+      "id": 9,
+      "content": "Multi-tiered contextually-based product",
+      "tags": ["birthday"],
+      "consciousness": 9,
+      "time": 9,
+      "feeling": 9,
+      "groupIds": []
+    }, {
+      "id": 10,
+      "content": "Versatile incremental initiative",
+      "tags": ["tale", "fishing","birthday"],
+      "consciousness": 10,
+      "time": 10,
+      "feeling": 10,
+      "groupIds": []
+    }
+  ],
+  "links": [
+    {
+      "linkId": 1,
+      "source": 2,
+      "target": 3,
+      "groupId": 1
+    },
+    {
+      "linkId": 2,
+      "source": 2,
+      "target": 6,
+      "groupId": 1
+    },
+    {
+      "linkId": 3,
+      "source": 2,
+      "target": 8,
+      "groupId": 1
+    },
+    {
+      "linkId": 4,
+      "source": 2,
+      "target": 10,
+      "groupId": 1
+    },
+    {
+      "linkId": 5,
+      "source": 3,
+      "target": 6,
+      "groupId": 1
+    },
+    {
+      "linkId": 6,
+      "source": 3,
+      "target": 8,
+      "groupId": 1
+    },
+    {
+      "linkId": 7,
+      "source": 3,
+      "target": 10,
+      "groupId": 1
+    },
+    {
+      "linkId": 8,
+      "source": 6,
+      "target": 8,
+      "groupId": 1
+    },
+    {
+      "linkId": 9,
+      "source": 6,
+      "target": 10,
+      "groupId": 1
+    },
+    {
+      "linkId": 10,
+      "source": 8,
+      "target": 10,
+      "groupId": 1
+    },
+    {
+      "linkId": 11,
+      "source": 2,
+      "target": 3,
+      "groupId": 2
+    },
+    {
+      "linkId": 12,
+      "source": 2,
+      "target": 6,
+      "groupId": 2
+    },
+    {
+      "linkId": 13,
+      "source": 2,
+      "target": 8,
+      "groupId": 2
+    },
+    {
+      "linkId": 14,
+      "source": 3,
+      "target": 6,
+      "groupId": 2
+    },
+    {
+      "linkId": 15,
+      "source": 3,
+      "target": 8,
+      "groupId": 2
+    },
+    {
+      "linkId": 16,
+      "source": 6,
+      "target": 8,
+      "groupId": 2
+    },
+    {
+      "linkId": 17,
+      "source": 4,
+      "target": 6,
+      "groupId": 3
+    },
+    {
+      "linkId": 18,
+      "source": 4,
+      "target": 7,
+      "groupId": 3
+    },
+    {
+      "linkId": 19,
+      "source": 4,
+      "target": 10,
+      "groupId": 3
+    },
+    {
+      "linkId": 20,
+      "source": 6,
+      "target": 7,
+      "groupId": 3
+    },
+    {
+      "linkId": 21,
+      "source": 6,
+      "target": 10,
+      "groupId": 3
+    },
+    {
+      "linkId": 22,
+      "source": 7,
+      "target": 10,
+      "groupId": 3
+    },
+    {
+      "linkId": 23,
+      "source": 1,
+      "target": 4,
+      "groupId": 4
+    },
+    {
+      "linkId": 24,
+      "source": 1,
+      "target": 5,
+      "groupId": 4
+    },
+    {
+      "linkId": 25,
+      "source": 1,
+      "target": 9,
+      "groupId": 4
+    },
+    {
+      "linkId": 26,
+      "source": 1,
+      "target": 10,
+      "groupId": 4
+    },
+    {
+      "linkId": 27,
+      "source": 4,
+      "target": 5,
+      "groupId": 4
+    },
+    {
+      "linkId": 28,
+      "source": 4,
+      "target": 9,
+      "groupId": 4
+    },
+    {
+      "linkId": 29,
+      "source": 4,
+      "target": 10,
+      "groupId": 4
+    },
+    {
+      "linkId": 30,
+      "source": 5,
+      "target": 9,
+      "groupId": 4
+    },
+    {
+      "linkId": 31,
+      "source": 5,
+      "target": 10,
+      "groupId": 4
+    },
+    {
+      "linkId": 32,
+      "source": 9,
+      "target": 10,
+      "groupId": 4
+    }
+  ],
+  "groups": [
+    {
+      "groupId": 1,
+      "keyword": "tale",
+      "links": [1,2,3,4,5,6,7,8,9,10]
+    },
+    {
+      "groupId": 2,
+      "keyword": "contribution",
+      "links": [11,12,13,14,15,16]
+    },
+    {
+      "groupId": 3,
+      "keyword": "fishing",
+      "links": [17,18,19,20,21,22]
+    },
+    {
+      "groupId": 4,
+      "keyword": "birthday",
+      "links": [23,24,25,26,27,28,29,30,31,32]
+    }
+  ]
+}
