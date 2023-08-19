@@ -1,9 +1,7 @@
-import { useRef, useCallback, useMemo, useState } from 'react';
+import { useRef, useCallback, useMemo, useState, useEffect } from 'react';
 import { ForceGraph3D } from 'react-force-graph'; // https://github.com/vasturiano/react-force-graph
 import sampledata from '../dataset/sampledata.json';
 import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
-import {Object3D, Vector3} from 'three';
-import SpriteText from 'three-spritetext';
 import * as THREE from 'three';
 import {genRandomTree} from '../utils/randomData.js';
 
@@ -11,17 +9,7 @@ const extraRenderers = [new CSS2DRenderer() as any];
 
 function Archive() {
   const fgRef = useRef<any>();
-
-  const groupData = useMemo(() => {
-    return sampledata.groups
-  }, []);
-  const linksData = useMemo(() => {
-    return sampledata.links
-  }, []);
-  const nodesData = useMemo(() => {
-    return sampledata.nodes
-  }, []);
-  const [geometry, setGeometry] = useState();
+  const [graphData, setGraphData] = useState<any>(sampledata);
 
   const handleClick = useCallback((node: any) => {
     // Aim at node from outside it
@@ -35,29 +23,38 @@ function Archive() {
     );
     
   }, [fgRef]);
-
+  
   const nodeThreeObject = (node: any) => {
-    const geometryGroup = new THREE.Group();
-    const { groupIds } = node;
-    groupIds.forEach((id: number):void => {
-      geometryGroup.add(getGeometryFromGroupId(id));
-    });
-
-    return geometryGroup
+    const nodeEl = document.createElement('div');
+    nodeEl.textContent = node.id;
+    nodeEl.style.color = node.color;
+    nodeEl.className = 'node-label';
+    return new CSS2DObject(nodeEl);
   }
 
-  const getGeometryFromGroupId = (groupId: number) => {
-    const targetGroup = groupData.filter(g => g.groupId === groupId)[0];
+  // Node 에 geometry?
+  // const nodeThreeObject = (node: any) => {
+  //   const geometryGroup = new THREE.Group();
+  //   const { groupIds } = node;
+  //   groupIds.forEach((id: number):void => {
+  //     geometryGroup.add(getGeometryFromGroupId(id));
+  //   });
+
+  //   return geometryGroup
+  // }
+
+  const getGeometryFromGroupId = (groupId: number, groupData: any, linksData: any) => {
+    const targetGroup = groupData.filter((g: any) => g.groupId === groupId)[0];
     const { links } = targetGroup;
-    const linkObjectList = links.map(id => (
-      linksData.filter(link => link.linkId === id)[0]
+    const linkObjectList = links.map((id: any) => (
+      linksData.filter((link: any) => link.linkId === id)[0]
     ));
 
     const material = new THREE.MeshNormalMaterial({side:THREE.DoubleSide})
     let geometry = new THREE.BufferGeometry()
-    
+
     const points:any = [];
-    linkObjectList.forEach(linkObj => {
+    linkObjectList.forEach((linkObj :any) => {
       points.push(new THREE.Vector3(linkObj.source.x, linkObj.source.y, linkObj.source.z))
       points.push(new THREE.Vector3(linkObj.target.x, linkObj.target.y, linkObj.target.z))
     })
@@ -69,22 +66,49 @@ function Archive() {
     return mesh
   }
 
+  const getGeometryGroupFromGroupId = (id: number) => {
+    const geometryGroup = new THREE.Group();
+    geometryGroup.add(getGeometryFromGroupId(id));
+
+    return geometryGroup
+  }
+
+  const linkThreeObject = (link: any) => {
+    const { groupId } = link;
+    const object = getGeometryFromGroupId(groupId, graphData.groups, graphData.links);
+    console.log('linkThreeObject: ', object)
+    return object;
+  }
+
+  const linkPositionUpdate = (linkObject: any, {start,end}:{start:any, end:any}, link:any) => {
+    const { groupId } = link;
+    const updatedLinkMeshObj  = getGeometryFromGroupId(groupId, graphData.groups, graphData.links);
+
+    Object.assign(linkObject.geometry, updatedLinkMeshObj.geometry);
+  }
+
   return (
     <div>
       <ForceGraph3D
+        ref={fgRef}
         extraRenderers={extraRenderers}
-        graphData={sampledata}
+        graphData={graphData}
         nodeAutoColorBy="group"
         nodeThreeObject={nodeThreeObject}
         nodeThreeObjectExtend={true}
         nodeOpacity={0.5}
-        ref={fgRef}
-        onNodeClick={handleClick}
-        linkVisibility={true}
         nodeRelSize={1}
         nodeColor={'white'}
+        onNodeClick={handleClick}
+        linkThreeObject={linkThreeObject}
+        linkPositionUpdate={linkPositionUpdate}
+        linkVisibility={true}
         linkThreeObjectExtend={true}
-        // linkThreeObject={linkThreeObject}
+        // onNodeDragEnd={node => {
+        //   node.fx = node.x;
+        //   node.fy = node.y;
+        //   node.fz = node.z;
+        // }} 노드 드래그 이동시 위치 고정
       />
     </div>
   )
