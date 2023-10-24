@@ -1,0 +1,43 @@
+$default-grid-columns: 12;
+
+@for $i from 1 through calc($default-grid-columns + 1) {
+  .colSt#{$i} {
+    grid-column-start: $i;
+  }
+  .colE#{$i} {
+    grid-column-end: $i;
+    display: flex;
+  }
+  .rowSt#{$i} {
+    grid-row-start: $i;
+  }
+  .rowE#{$i} {
+    grid-row-end: $i;
+  }
+}
+.flexCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  padding: 2rem 1rem;
+}
+.gridContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat($default-grid-columns, 1fr);
+  gap: 1rem;
+}
+
+.picture {
+  width: 100%;
+  picture, img {
+    display: flex;
+    width: 100%;
+    height: auto;
+  }
+}

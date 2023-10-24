@@ -1,5 +1,7 @@
 import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import styles from '../styles/Research.module.scss';
+
 const imageAssets = [
   {
     title: '1',
@@ -134,13 +136,10 @@ const imageAssets = [
     title: '27',
     width: 2000,
     height: 1601,
-  },
-
-
-
+  }
 ]
-const LazyImage = ({ image } : any) => (
-  <div>
+const LazyImage = ({ image, className } : any) => (
+  <div className={`${styles.picture} ${className ? className : ''}`}>
     <picture>
       <source srcSet={`/images/${image.title}.webp`} type="image/webp" />
       <LazyLoadImage
@@ -153,8 +152,8 @@ const LazyImage = ({ image } : any) => (
   </div>
 );
 
-const Picture = ({ image }: any) => (
-  <div>
+const Picture = ({ image, className }: any) => (
+  <div className={`${styles.picture} ${className ? className : ''}`}>
     <picture>
       <source srcSet={`/images/${image.title}.webp`} type="image/webp" />
       <source srcSet={`/images/${image.title}.jpg`} type="image/jpeg"/>
@@ -172,13 +171,19 @@ function Research() {
 
   return (
     <>
-      <div>
-        <Picture image={imageAssets[0]} />
-        {
-          imageAssets.map(i => (
-            <LazyImage image={i} />
-          ))
-        }
+      <div className={styles.container}>
+        <div className={styles.gridContainer}>
+          <div className={`${styles.colSt1} ${styles.colE5} ${styles.rowSt1} ${styles.rowE2} ${styles.flexCol}`}>
+            <LazyImage image={imageAssets[25]} />
+            <LazyImage image={imageAssets[5]} />
+          </div>
+          <LazyImage image={imageAssets[2]} className={`${styles.colSt6} ${styles.colE13}`} />
+          
+          <div className={`${styles.rowSt2} ${styles.rowE3}`}>
+            <LazyImage image={imageAssets[3]} className={styles.gridLarge} />
+            <LazyImage image={imageAssets[3]} className={styles.gridMid} />
+          </div>
+        </div>
       </div>
     </>   
   )
