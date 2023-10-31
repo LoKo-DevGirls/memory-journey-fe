@@ -24,6 +24,7 @@ body, html {
 #root {
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
 .container {
@@ -33,4 +34,17 @@ body, html {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+nav.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4rem;
+  width: 100%;
+  background: linear-gradient(180deg, black 0%, rgba(0,0,0,0) 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  z-index: 99;
 }

@@ -4,6 +4,7 @@ import sampledata from '../dataset/sampledata.json';
 import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
 import * as THREE from 'three';
 import {genRandomTree} from '../utils/randomData.js';
+import Nav from '../Nav';
 
 const extraRenderers = [new CSS2DRenderer() as any];
 
@@ -80,6 +81,7 @@ function Archive() {
 
   return (
     <div>
+      <Nav />
       <ForceGraph3D
         ref={fgRef}
         extraRenderers={extraRenderers}

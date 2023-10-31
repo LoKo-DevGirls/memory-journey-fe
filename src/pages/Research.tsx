@@ -1,6 +1,7 @@
 import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import styles from '../styles/Research.module.scss';
+import Nav from '../Nav';
 
 const imageAssets = [
   {
@@ -171,6 +172,7 @@ function Research() {
 
   return (
     <>
+      <Nav />
       <div className={`${styles.container} ${styles.bgBlack}`}>
         <div className={styles.gridContainer}>
           <div className={`${styles.colSt1} ${styles.colE5} ${styles.rowSt1} ${styles.rowE2} ${styles.flexCol}`}>
