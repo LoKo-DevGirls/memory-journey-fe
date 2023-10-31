@@ -71,6 +71,7 @@ $color3: #060612;
   background: -moz-radial-gradient(50% 50%, ellipse, $color1 0%, $color2 75%, $color3 100%), $bg-texture;
   font-family: Courier, monospace;
   font-smoothing: antialiased;
+  position: relative;
 
   a {
     font-size: 1.25rem;
@@ -84,4 +85,15 @@ $color3: #060612;
   line-height: 1.25rem;
   color: $text-color;
   
+}
+
+.switch {
+  position: fixed;
+  top: 2rem;
+  right: 4rem;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo:400');
+.korean {
+  font-family: "Nanum Myeongjo";
 }
