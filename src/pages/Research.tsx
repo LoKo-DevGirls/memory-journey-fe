@@ -171,7 +171,7 @@ function Research() {
 
   return (
     <>
-      <div className={styles.container}>
+      <div className={`${styles.container} ${styles.bgBlack}`}>
         <div className={styles.gridContainer}>
           <div className={`${styles.colSt1} ${styles.colE5} ${styles.rowSt1} ${styles.rowE2} ${styles.flexCol}`}>
             <Picture image={imageAssets[25]} />
@@ -184,7 +184,7 @@ function Research() {
 
           <Picture image={imageAssets[1]} className={`${styles.rowSt3} ${styles.rowE4} ${styles.colSt1} ${styles.colE13}`} />
 
-          <div className={`${styles.rowSt4} ${styles.rowE5} ${styles.colSt1} ${styles.colE13}`}>
+          <div className={`${styles.rowSt4} ${styles.rowE5} ${styles.colSt1} ${styles.colE13} ${styles.flexCenter}`}>
             <LazyImage image={imageAssets[13]} className={``} />
             <LazyImage image={imageAssets[7]} className={``} />
             <LazyImage image={imageAssets[11]} className={``} />
@@ -200,7 +200,7 @@ function Research() {
             <LazyImage image={imageAssets[12]} className={`${styles.colSt6} ${styles.colE13}`} />
           </div>
 
-          <div className={`${styles.rowSt8} ${styles.rowE9} ${styles.colSt1} ${styles.colE13}`}>
+          <div className={`${styles.rowSt8} ${styles.rowE9} ${styles.colSt1} ${styles.colE13} ${styles.flexCenter}`}>
             <LazyImage image={imageAssets[15]} className={``} />
             <LazyImage image={imageAssets[14]} className={``} />
             <LazyImage image={imageAssets[16]} className={``} />

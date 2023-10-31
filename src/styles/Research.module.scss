@@ -18,19 +18,28 @@ $default-grid-columns: 12;
 .flexCol {
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
+}
+.flexCenter {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-  padding: 2rem 1rem;
+  padding: 6rem 4rem;
+  overflow-x: hidden;
 }
 .gridContainer {
   width: 100%;
   display: grid;
   grid-template-columns: repeat($default-grid-columns, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
+  row-gap: 2.5rem;
   align-items: center;
 }
 
@@ -41,4 +50,8 @@ $default-grid-columns: 12;
     width: 100%;
     height: auto;
   }
+}
+
+.bgBlack {
+  background-color: black;
 }
