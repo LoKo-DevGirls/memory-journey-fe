@@ -174,14 +174,56 @@ function Research() {
       <div className={styles.container}>
         <div className={styles.gridContainer}>
           <div className={`${styles.colSt1} ${styles.colE5} ${styles.rowSt1} ${styles.rowE2} ${styles.flexCol}`}>
-            <LazyImage image={imageAssets[25]} />
-            <LazyImage image={imageAssets[5]} />
+            <Picture image={imageAssets[25]} />
+            <Picture image={imageAssets[5]} />
           </div>
-          <LazyImage image={imageAssets[2]} className={`${styles.colSt6} ${styles.colE13}`} />
+          <Picture image={imageAssets[2]} className={`${styles.colSt6} ${styles.colE13}`} />
           
-          <div className={`${styles.rowSt2} ${styles.rowE3}`}>
-            <LazyImage image={imageAssets[3]} className={styles.gridLarge} />
-            <LazyImage image={imageAssets[3]} className={styles.gridMid} />
+          <Picture image={imageAssets[3]} className={`${styles.rowSt2} ${styles.rowE3} ${styles.colSt1} ${styles.colE7}`} />
+          <Picture image={imageAssets[8]} className={`${styles.rowSt2} ${styles.rowE3} ${styles.colSt8} ${styles.colE13}`} />
+
+          <Picture image={imageAssets[1]} className={`${styles.rowSt3} ${styles.rowE4} ${styles.colSt1} ${styles.colE13}`} />
+
+          <div className={`${styles.rowSt4} ${styles.rowE5} ${styles.colSt1} ${styles.colE13}`}>
+            <LazyImage image={imageAssets[13]} className={``} />
+            <LazyImage image={imageAssets[7]} className={``} />
+            <LazyImage image={imageAssets[11]} className={``} />
+          </div>
+
+          <div className={`${styles.rowSt6} ${styles.rowE7} ${styles.colSt1} ${styles.colE13} ${styles.gridContainer}`}>
+            <LazyImage image={imageAssets[4]} className={`${styles.colSt1} ${styles.colE8}`} />
+            <LazyImage image={imageAssets[18]} className={`${styles.colSt9} ${styles.colE13}`} />
+          </div>
+
+          <div className={`${styles.rowSt7} ${styles.rowE8} ${styles.colSt1} ${styles.colE13} ${styles.gridContainer}`}>
+            <LazyImage image={imageAssets[17]} className={`${styles.colSt1} ${styles.colE5}`} />
+            <LazyImage image={imageAssets[12]} className={`${styles.colSt6} ${styles.colE13}`} />
+          </div>
+
+          <div className={`${styles.rowSt8} ${styles.rowE9} ${styles.colSt1} ${styles.colE13}`}>
+            <LazyImage image={imageAssets[15]} className={``} />
+            <LazyImage image={imageAssets[14]} className={``} />
+            <LazyImage image={imageAssets[16]} className={``} />
+          </div>
+
+          <LazyImage image={imageAssets[22]} className={`${styles.rowSt9} ${styles.rowE10} ${styles.colSt1} ${styles.colE7}`} />
+          <div className={`${styles.rowSt9} ${styles.rowE10} ${styles.colSt8} ${styles.colE13} ${styles.flexCol}`}>
+            <LazyImage image={imageAssets[10]} className={`${styles.colSt1} ${styles.colE5}`} />
+            <LazyImage image={imageAssets[9]} className={`${styles.colSt1} ${styles.colE5}`} />
+            <LazyImage image={imageAssets[6]} className={`${styles.colSt1} ${styles.colE5}`} />
+          </div>
+
+          <div className={`${styles.rowSt10} ${styles.rowE11} ${styles.colSt1} ${styles.colE6} ${styles.flexCol}`}>
+            <LazyImage image={imageAssets[24]} className={`${styles.colSt1} ${styles.colE5}`} />
+            <LazyImage image={imageAssets[23]} className={`${styles.colSt1} ${styles.colE5}`} />
+          </div>
+          <LazyImage image={imageAssets[19]} className={`${styles.rowSt10} ${styles.rowE11} ${styles.colSt7} ${styles.colE13}`} />
+
+          <LazyImage image={imageAssets[0]} className={`${styles.rowSt11} ${styles.rowE12} ${styles.colSt1} ${styles.colE13}`} />
+
+          <div className={`${styles.rowSt12} ${styles.rowE13} ${styles.colSt1} ${styles.colE13} ${styles.gridContainer}`}>
+            <LazyImage image={imageAssets[21]} className={`${styles.colSt1} ${styles.colE6}`} />
+            <LazyImage image={imageAssets[26]} className={`${styles.colSt7} ${styles.colE13}`} />
           </div>
         </div>
       </div>
