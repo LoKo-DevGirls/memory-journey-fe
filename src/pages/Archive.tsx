@@ -1,6 +1,4 @@
 import { useRef, useCallback, useMemo, useState, useEffect } from 'react';
-import { createRoot } from 'react-dom/client';
-import { flushSync } from 'react-dom';
 import { ForceGraph3D } from 'react-force-graph'; // https://github.com/vasturiano/react-force-graph
 import sampledata from '../dataset/sampledata.json';
 import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
@@ -13,7 +11,6 @@ const extraRenderers = [new CSS2DRenderer() as any];
 function Archive() {
   const fgRef = useRef<any>();
   const [graphData, setGraphData] = useState<any>(sampledata);
-  const [hoveredNodeId, setHoveredNodeId] = useState<number>(0);
   const [selectedNode, setSelectedNode] = useState<any>();
 
   const handleClick = useCallback((node: any) => {
