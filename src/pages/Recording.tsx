@@ -4,7 +4,7 @@ import styles from '../styles/Recording.module.scss';
 // https://github.com/chengsokdara/use-whisper
 import { useWhisper } from '@chengsokdara/use-whisper';
 import Loader from '../assets/icon/loader';
-import Nav from '../Nav';
+import Nav from '../components/Nav';
 
 const baseUrl = import.meta.env.VITE_BE_URL;
 axios.defaults.baseURL = `https://${baseUrl}`;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import styles from '../styles/Research.module.scss';
-import Nav from '../Nav';
+import Nav from '../components/Nav';
 
 const imageAssets = [
   {
