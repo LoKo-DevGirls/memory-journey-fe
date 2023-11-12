@@ -9,6 +9,10 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import axios from "axios";
+
+const baseUrl = import.meta.env.VITE_BE_URL;
+axios.defaults.baseURL = `https://${baseUrl}`;
 
 const router = createBrowserRouter([
   {

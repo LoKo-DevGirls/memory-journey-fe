@@ -6,9 +6,6 @@ import { useWhisper } from '@chengsokdara/use-whisper';
 import Loader from '../assets/icon/loader';
 import Nav from '../components/Nav';
 
-const baseUrl = import.meta.env.VITE_BE_URL;
-axios.defaults.baseURL = `https://${baseUrl}`;
-
 interface DreamForm {
   dreamText: string | any
   time: number
