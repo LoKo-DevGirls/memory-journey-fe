@@ -5,6 +5,8 @@ import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer
 import * as THREE from 'three';
 import Nav from '../components/Nav';
 import styles from '../styles/Archive.module.scss';
+import axios from 'axios';
+import { createGraphData } from '../utils/createGraphData';
 
 const extraRenderers = [new CSS2DRenderer() as any];
 
@@ -12,7 +14,28 @@ function Archive() {
   const fgRef = useRef<any>();
   const [graphData, setGraphData] = useState<any>(sampledata);
   const [selectedNode, setSelectedNode] = useState<any>();
+  const [loading, setLoading] = useState<boolean>();
 
+  useEffect(() => {
+    const fetchData = async () =>{
+      setLoading(true);
+      try {
+        const {data: response} = await axios.get('memory');
+        const data = createGraphData(response)
+        // TODO:
+        // setGraphData(data)
+      } catch (error: any) {
+        console.error(error.message);
+      }
+      setLoading(false);
+    }
+
+    fetchData();
+    
+    return () => {
+    }
+  }, [])
+  
   const handleClick = useCallback((node: any) => {
     // Aim at node from outside it
     const distance = 40;
