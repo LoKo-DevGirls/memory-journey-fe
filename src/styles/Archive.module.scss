@@ -1,0 +1,52 @@
+.descSection {
+  color: white;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  max-height: 80vh;
+  max-width: 50vw;
+  overflow-y: auto;
+
+  background-color: rgba($color: white, $alpha: 0.4);
+  border: 2px solid rgba($color: white, $alpha: 0.6);
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+input[type="range"] {
+  appearance: slider-vertical;
+  cursor: pointer;
+}
+
+.inputWrapper { 
+  position: relative;
+  margin: 1rem 0;
+
+  datalist {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    position: absolute;
+    left: calc(50% + 1rem);
+    top: 0;
+    text-align: left;
+    font-size: 14px;
+  }
+}
+
+.Keywords {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  span {
+    margin: 0 0.5rem;
+  }
+}

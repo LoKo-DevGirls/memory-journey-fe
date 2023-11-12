@@ -6,6 +6,7 @@ import sampledata from '../dataset/sampledata.json';
 import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
 import * as THREE from 'three';
 import Nav from '../components/Nav';
+import styles from '../styles/Archive.module.scss';
 
 const extraRenderers = [new CSS2DRenderer() as any];
 
@@ -13,6 +14,7 @@ function Archive() {
   const fgRef = useRef<any>();
   const [graphData, setGraphData] = useState<any>(sampledata);
   const [hoveredNodeId, setHoveredNodeId] = useState<number>(0);
+  const [selectedNode, setSelectedNode] = useState<any>();
 
   const handleClick = useCallback((node: any) => {
     // Aim at node from outside it
@@ -24,7 +26,8 @@ function Archive() {
       node, // lookAt ({ x, y, z })
       3000  // ms transition duration
     );
-    
+
+    setSelectedNode(node)
   }, [fgRef]);
   
   const nodeThreeObject = (node: any) => {
@@ -34,25 +37,44 @@ function Archive() {
     nodeEl.style.opacity = '0.3';
     nodeEl.className = 'node-label';
 
-    // TODO: keywords text styling
-    // TODO: content text styling
-    const descSection = document.createElement('div');
-    const root = createRoot(descSection);
-    flushSync(() => {
-      root.render(<NodeDescription node={node} />);
-    });
-    nodeEl.appendChild(descSection)
-
     return new CSS2DObject(nodeEl);
   }
-
-  const NodeDescription = (node: any) => {
+  
+  const NodeDescription = ({node}: any) => {
     return (
-      <section>
-        {node.id}
+      node &&
+      <section className={`${styles.descSection}`}>
         <p>{node.content}</p>
-        <p>{node.tags}</p>
-        <p>NodeDescription</p>
+        <div className={styles.inputContainer}>
+          <div className={styles.inputWrapper}>
+            <input value={node.time} disabled type="range" min="0" max="100" step="1" list='timeValues' />
+            <datalist id="timeValues">
+              <option value="0" label="old"></option>
+              <option value="100" label="recent"></option>
+            </datalist>
+          </div>
+
+          <div className={styles.inputWrapper}>
+            <input value={node.feeling} disabled type="range" min="0" max="100" step="1" list='feelingValues' />
+            <datalist id="feelingValues">
+              <option value="0" label="good"></option>
+              <option value="100" label="bad"></option>
+            </datalist>
+          </div>
+
+          <div className={styles.inputWrapper}>
+            <input value={node.consciousness} disabled type="range" min="0" max="100" step="1" list='consciousnessValues' />
+            <datalist id="consciousnessValues">
+              <option value="0" label="vivid"></option>
+              <option value="100" label="vague"></option>
+            </datalist>
+          </div>
+        </div>
+        <p className={styles.Keywords}>Keywords: 
+          {node.tags.map((i:any, index: any) => (
+            <span key={index}>{i}</span>
+          ))}
+        </p>
       </section>
     )
   }
@@ -108,11 +130,11 @@ function Archive() {
         extraRenderers={extraRenderers}
         graphData={graphData}
         nodeAutoColorBy="group"
-        nodeLabel="id" // hovered content
+        nodeLabel="content" // TODO: hovered content
         nodeThreeObject={nodeThreeObject}
         nodeThreeObjectExtend={true} // whether node sphere replace or not
         nodeOpacity={0.05}
-        nodeRelSize={1}
+        nodeRelSize={2}
         nodeColor={'white'}
         onNodeClick={handleClick}
         linkThreeObject={linkThreeObject}
@@ -127,6 +149,7 @@ function Archive() {
         }}
         // onNodeHover={onNodeHover}
       />
+      <NodeDescription node={selectedNode}/>
     </div>
   )
 }
