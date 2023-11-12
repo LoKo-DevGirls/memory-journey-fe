@@ -1,9 +1,10 @@
 import { useRef, useCallback, useMemo, useState, useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
+import { flushSync } from 'react-dom';
 import { ForceGraph3D } from 'react-force-graph'; // https://github.com/vasturiano/react-force-graph
 import sampledata from '../dataset/sampledata.json';
 import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
 import * as THREE from 'three';
-import {genRandomTree} from '../utils/randomData.js';
 import Nav from '../components/Nav';
 
 const extraRenderers = [new CSS2DRenderer() as any];
@@ -35,8 +36,25 @@ function Archive() {
 
     // TODO: keywords text styling
     // TODO: content text styling
+    const descSection = document.createElement('div');
+    const root = createRoot(descSection);
+    flushSync(() => {
+      root.render(<NodeDescription node={node} />);
+    });
+    nodeEl.appendChild(descSection)
 
     return new CSS2DObject(nodeEl);
+  }
+
+  const NodeDescription = (node: any) => {
+    return (
+      <section>
+        {node.id}
+        <p>{node.content}</p>
+        <p>{node.tags}</p>
+        <p>NodeDescription</p>
+      </section>
+    )
   }
 
   const getGeometryFromGroupId = (groupId: number, groupData: any, linksData: any) => {
@@ -75,9 +93,12 @@ function Archive() {
     Object.assign(linkObject.geometry, updatedLinkMeshObj.geometry);
   }
 
-  // const onNodeHover = (node:any) => {
-  //   setHoveredNodeId(node.id);
-  // }
+  const onNodeHover = (node:any) => {
+    if (node) {
+      setHoveredNodeId(node.id);
+      console.log('node:', node)
+    }
+  }
 
   return (
     <div>
@@ -87,6 +108,7 @@ function Archive() {
         extraRenderers={extraRenderers}
         graphData={graphData}
         nodeAutoColorBy="group"
+        nodeLabel="id" // hovered content
         nodeThreeObject={nodeThreeObject}
         nodeThreeObjectExtend={true} // whether node sphere replace or not
         nodeOpacity={0.05}
