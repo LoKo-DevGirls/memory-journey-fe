@@ -29,13 +29,16 @@ function Archive() {
 
     setSelectedNode(node)
   }, [fgRef]);
+
+  const onBackgroundClick = () => {
+    setSelectedNode(null)
+  }
   
   const nodeThreeObject = (node: any) => {
     const nodeEl = document.createElement('div');
-    nodeEl.textContent = node.id;
+    // nodeEl.textContent = node.id;
     nodeEl.style.color = 'white';
     nodeEl.style.opacity = '0.3';
-    nodeEl.className = 'node-label';
 
     return new CSS2DObject(nodeEl);
   }
@@ -115,13 +118,15 @@ function Archive() {
     Object.assign(linkObject.geometry, updatedLinkMeshObj.geometry);
   }
 
-  const onNodeHover = (node:any) => {
-    if (node) {
-      setHoveredNodeId(node.id);
-      console.log('node:', node)
+  const hoverContent = (node: any) => {
+    function truncateString(str: string, num:number) {
+      if (str.length <= num) {
+        return str
+      }
+      return str.slice(0, num) + '...'
     }
+    return truncateString(node.content, 20)
   }
-
   return (
     <div>
       <Nav />
@@ -130,13 +135,14 @@ function Archive() {
         extraRenderers={extraRenderers}
         graphData={graphData}
         nodeAutoColorBy="group"
-        nodeLabel="content" // TODO: hovered content
+        nodeLabel={hoverContent} // TODO: hovered content
         nodeThreeObject={nodeThreeObject}
         nodeThreeObjectExtend={true} // whether node sphere replace or not
         nodeOpacity={0.05}
         nodeRelSize={2}
         nodeColor={'white'}
         onNodeClick={handleClick}
+        onBackgroundClick={onBackgroundClick}
         linkThreeObject={linkThreeObject}
         linkPositionUpdate={linkPositionUpdate}
         linkOpacity={0.02}
