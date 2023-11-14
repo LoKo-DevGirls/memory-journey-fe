@@ -1,3 +1,12 @@
+// TODO: add color palette
+const colorList = [
+  '#1beaf2',
+  '#1ef24e',
+  '#223DDC',
+  '#EEE966'
+]
+const randomColor = Math.floor(Math.random()*16777215).toString(16);
+
 const createGraphData: InitialGraphData | any= (memoryList: any, tagList?: string[]) => {
   let result: any = {};
   let allKeywords: string[] = []; // Can be replaced with tagList?
@@ -37,7 +46,7 @@ function generateLinksAndGroups(nodes: any, tagsList: any) {
     groupId: index,
     keyword: tag,
     links: [],
-    color: '#1beaf2' // TODO: generate different color
+    color: colorList[index % colorList.length]
   }));
 
   for (let i = 0; i < nodes.length; i++) {
@@ -50,8 +59,8 @@ function generateLinksAndGroups(nodes: any, tagsList: any) {
         for (const tag of commonTags) {
           const index = links.push({ 
             linkId: 0, 
-            source: i, 
-            target: j, 
+            source: nodes[i].id,
+            target: nodes[j].id,
             // commonTags, //For debugging
             groupId: tagsList.indexOf(tag)
           });
