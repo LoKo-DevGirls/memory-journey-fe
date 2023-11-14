@@ -23,7 +23,7 @@ function Archive() {
         const {data: response} = await axios.get('memory');
         const data = createGraphData(response)
         // TODO: Comment out below when server data ready!
-        setGraphData(data)
+        // setGraphData(data)
       } catch (error: any) {
         console.error(error.message);
       }
