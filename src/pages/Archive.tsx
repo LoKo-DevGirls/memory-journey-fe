@@ -24,10 +24,10 @@ function Archive() {
         const data = createGraphData(response)
 
         // TODO: Comment out below when server data ready!
-        // setGraphData(data)
+        setGraphData(data)
 
         // TODO: Remove below
-        setGraphData(createGraphData(sampledata.nodes))
+        // setGraphData(createGraphData(sampledata.nodes))
         
       } catch (error: any) {
         console.error(error.message);
