@@ -1,8 +1,5 @@
 const createGraphData: InitialGraphData | any= (memoryList: any, tagList?: string[]) => {
-  const result: any = {};
-  const groups: any = [];
-  const links: any = [];
-  const nodes: any = [];
+  let result: any = {};
   let allKeywords: string[] = []; // Can be replaced with tagList?
   for (const memory of  memoryList) {
     for (const tag of memory.tags) {
@@ -12,13 +9,36 @@ const createGraphData: InitialGraphData | any= (memoryList: any, tagList?: strin
     }
   }
 
-  console.log('list: ', generateLinks(memoryList))
+  const { links, groups } = generateLinksAndGroups(memoryList, allKeywords)
+  const nodes = [...memoryList]
+  nodes.forEach((i: any) => {
+    i.groupIds = []
+    i.tags.forEach((tag: string) => {
+      const [group] = groups.filter((e:any) => e.keyword === tag)
+      if (!i.groupIds.includes(group.groupId)) {
+        i.groupIds.push(group.groupId)
+      }
+    })
+  })
+  
+  result = {
+    nodes,
+    links,
+    groups
+  }
+
   return result
 }
 
 // Function to generate links based on shared keywords
-function generateLinks(nodes: any) {
+function generateLinksAndGroups(nodes: any, tagsList: any) {
   const links = [];
+  const groups = tagsList.map((tag: any, index: number) => ({
+    groupId: index,
+    keyword: tag,
+    links: [],
+    color: '#1beaf2' // TODO: generate different color
+  }));
 
   for (let i = 0; i < nodes.length; i++) {
     for (let j = i + 1; j < nodes.length; j++) {
@@ -27,13 +47,26 @@ function generateLinks(nodes: any) {
       );
 
       if (commonTags.length > 0) {
-        const index = links.push({ linkId: 0, source: i, target: j, commonTags });
-        links[links.length - 1].linkId = index
+        for (const tag of commonTags) {
+          const index = links.push({ 
+            linkId: 0, 
+            source: i, 
+            target: j, 
+            // commonTags, //For debugging
+            groupId: tagsList.indexOf(tag)
+          });
+          links[links.length - 1].linkId = index
+         
+          const groupIndex = groups.findIndex((i: any) => i.keyword === tag)
+          if (groupIndex !== -1) {
+            groups[groupIndex].links.push(index)
+          }
+        }
       }
     }
   }
 
-  return links;
+  return { links, groups };
 }
 
 export {createGraphData};
