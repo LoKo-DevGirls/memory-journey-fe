@@ -1,4 +1,4 @@
-const createGraphData: InitialGraphData | any= (memoryList: any, tagList: string[]) => {
+const createGraphData: InitialGraphData | any= (memoryList: any, tagList?: string[]) => {
   const result: any = {};
   const groups: any = [];
   const links: any = [];
@@ -12,19 +12,28 @@ const createGraphData: InitialGraphData | any= (memoryList: any, tagList: string
     }
   }
 
-  for (let i = 0; i < allKeywords.length; i++) {
-    const groupLinks: any = [];
-    const color = 'white';
-    // TODO: links data
-    groups.push({
-      groupId: i,
-      keyword: allKeywords[i],
-      links: groupLinks,
-      color
-    })
-  }
-  console.log(groups)
+  console.log('list: ', generateLinks(memoryList))
   return result
+}
+
+// Function to generate links based on shared keywords
+function generateLinks(nodes: any) {
+  const links = [];
+
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      const commonTags = nodes[i].tags.filter((tag: any) =>
+        nodes[j].tags.includes(tag)
+      );
+
+      if (commonTags.length > 0) {
+        const index = links.push({ linkId: 0, source: i, target: j, commonTags });
+        links[links.length - 1].linkId = index
+      }
+    }
+  }
+
+  return links;
 }
 
 export {createGraphData};
