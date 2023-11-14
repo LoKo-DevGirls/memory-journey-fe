@@ -12,7 +12,7 @@ const extraRenderers = [new CSS2DRenderer() as any];
 
 function Archive() {
   const fgRef = useRef<any>();
-  const [graphData, setGraphData] = useState<any>(sampledata);
+  const [graphData, setGraphData] = useState<any>();
   const [selectedNode, setSelectedNode] = useState<any>();
   const [loading, setLoading] = useState<boolean>();
 
@@ -22,8 +22,13 @@ function Archive() {
       try {
         const {data: response} = await axios.get('memory');
         const data = createGraphData(response)
+
         // TODO: Comment out below when server data ready!
         // setGraphData(data)
+
+        // TODO: Remove below
+        setGraphData(createGraphData(sampledata.nodes))
+        
       } catch (error: any) {
         console.error(error.message);
       }
