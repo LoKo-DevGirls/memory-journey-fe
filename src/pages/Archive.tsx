@@ -160,7 +160,7 @@ function Archive() {
         nodeLabel={hoverContent} // TODO: hovered content
         nodeThreeObject={nodeThreeObject}
         nodeThreeObjectExtend={true} // whether node sphere replace or not
-        nodeOpacity={0.3}
+        nodeOpacity={0.2}
         nodeRelSize={2}
         nodeColor={'white'}
         onNodeClick={handleClick}
