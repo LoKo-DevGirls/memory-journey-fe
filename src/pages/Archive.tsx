@@ -112,7 +112,7 @@ function Archive() {
     ));
     
     // TODO: Geometry material styling here
-    const material = new THREE.MeshMatcapMaterial({side:THREE.DoubleSide, transparent: true, opacity: 0.06, color: targetGroup.color})
+    const material = new THREE.MeshMatcapMaterial({side:THREE.DoubleSide, transparent: true, opacity: 0.02, color: targetGroup.color})
     let geometry = new THREE.BufferGeometry()
 
     const points:any = [];
