@@ -3,10 +3,12 @@ $bg-color2: #101018;
 $bg-color3: #060612;
 $text-color: #B95;
 $hightlight-color: #f2f2f2;
+$breakpoint: 1080px;
 
 .recordingContainer {
   font-family: Courier, monospace;
   position: relative;
+  min-height: 100%;
 
   background: -webkit-radial-gradient(50% 50%, ellipse, $bg-color1 0%, $bg-color2 75%, $bg-color3 100%);
   background: -moz-radial-gradient(50% 50%, ellipse, $bg-color1 0%, $bg-color2 75%, $bg-color3 100%);
@@ -195,4 +197,24 @@ a {
 
 .resultText {
   margin: 2rem;
+}
+
+// Small Screen
+@media screen and (max-width: $breakpoint) {
+  .recordingContainer {
+    height: auto;
+    padding: 1.5rem 0;
+  }
+  .inputContainer {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  textarea.text {
+    max-width: 80%;
+    width: 80%;
+    min-height: 50%;
+    height: 40vh;
+    max-height: 70vh;
+  }
 }

@@ -66,7 +66,8 @@ $color3: #060612;
 
 .paragraphContainer {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  display: flex;
   background: -webkit-radial-gradient(50% 50%, ellipse, $color1 0%, $color2 75%, $color3 100%) , $bg-texture;
   background: -moz-radial-gradient(50% 50%, ellipse, $color1 0%, $color2 75%, $color3 100%), $bg-texture;
   font-family: Courier, monospace;
@@ -96,4 +97,12 @@ $color3: #060612;
 @import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo:400');
 .korean {
   font-family: "Nanum Myeongjo";
+}
+
+.btnContainer {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
