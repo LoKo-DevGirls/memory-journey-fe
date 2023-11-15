@@ -1,11 +1,14 @@
 // TODO: add color palette
 const colorList = [
-  '#1beaf2',
-  '#1ef24e',
-  '#223DDC',
-  '#EEE966'
+  '#7C05F2',
+  '#044BD9',
+  '#F2B90C',
+  '#F27405',
+  '#F21F0C',
+  '#00D656',
+  '#FF00E7',
+  '#FFFFFF'
 ]
-const randomColor = Math.floor(Math.random()*16777215).toString(16);
 
 const createGraphData: InitialGraphData | any= (memoryList: any, tagList?: string[]) => {
   let result: any = {};
