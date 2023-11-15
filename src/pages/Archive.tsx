@@ -23,11 +23,8 @@ function Archive() {
         const {data: response} = await axios.get('memory');
         const data = createGraphData(response)
 
-        // TODO: Comment out below when server data ready!
         setGraphData(data)
-
-        // TODO: Remove below
-        // setGraphData(createGraphData(sampledata.nodes))
+        // console.log('graphdata:', graphData)
         
       } catch (error: any) {
         console.error(error.message);
@@ -163,7 +160,7 @@ function Archive() {
         nodeLabel={hoverContent} // TODO: hovered content
         nodeThreeObject={nodeThreeObject}
         nodeThreeObjectExtend={true} // whether node sphere replace or not
-        nodeOpacity={0.15}
+        nodeOpacity={0.3}
         nodeRelSize={2}
         nodeColor={'white'}
         onNodeClick={handleClick}
