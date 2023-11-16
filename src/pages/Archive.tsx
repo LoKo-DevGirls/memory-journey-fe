@@ -21,10 +21,12 @@ function Archive() {
       setLoading(true);
       try {
         const {data: response} = await axios.get('memory');
-        const data = createGraphData(response)
+        // TODO: remove slice
+        // const data = createGraphData(response)
+        const data = createGraphData(response.slice(20, 45))
+
 
         setGraphData(data)
-        // console.log('graphdata:', graphData)
         
       } catch (error: any) {
         console.error(error.message);
