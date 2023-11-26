@@ -173,11 +173,11 @@ function Archive() {
         nodeColor={'white'}
         onNodeClick={handleClick}
         onBackgroundClick={onBackgroundClick}
-        linkThreeObject={linkThreeObject}
-        linkPositionUpdate={linkPositionUpdate}
+        // linkThreeObject={linkThreeObject}
+        // linkPositionUpdate={linkPositionUpdate}
         linkOpacity={0.15}
         linkVisibility={true}
-        linkThreeObjectExtend={true}
+        // linkThreeObjectExtend={true}
         onNodeDragEnd={node => {
           node.fx = node.x;
           node.fy = node.y;
