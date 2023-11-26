@@ -7,6 +7,7 @@ import Nav from '../components/Nav';
 import styles from '../styles/Archive.module.scss';
 import axios from 'axios';
 import { createGraphData } from '../utils/createGraphData';
+import SpriteText from 'three-spritetext';
 
 const extraRenderers = [new CSS2DRenderer() as any];
 
@@ -65,6 +66,34 @@ function Archive() {
     nodeEl.className = styles.nodeEl;
     
     return new CSS2DObject(nodeEl);
+  }
+
+  const nodeSpriteText = (node: any) => {
+    const checkLineBreak = (text: string, wordsLength = 50) => {
+      let resultText:any = text.split(" ");
+
+      const symbol = "\n";
+    
+      if (resultText.length > wordsLength) {
+        for (let i = 1; i < resultText.length; i++) {
+          if (i % wordsLength == 0) {
+            resultText.splice(i, 0, symbol);
+          } else {
+            continue;
+          }
+        }
+      }
+      resultText = resultText.join(" ");
+      return resultText;
+    };
+    // https://github.com/vasturiano/three-spritetext
+    const sprite = new SpriteText(checkLineBreak(node.content));
+    sprite.textHeight = 8;
+    sprite.fontFace = 'Roboto';
+    sprite.strokeWidth = 0;
+    // sprite.material.depthWrite = false;
+    // sprite.fontWeight = 'Light';
+    return sprite;
   }
   
   const NodeDescription = ({node}: any) => {
@@ -166,11 +195,12 @@ function Archive() {
         graphData={graphData}
         nodeAutoColorBy="group"
         nodeLabel={hoverContent}
+        // nodeThreeObject={nodeSpriteText}
         nodeThreeObject={nodeThreeObject}
         nodeThreeObjectExtend={true} // whether node sphere replace or not
         nodeOpacity={0}
         nodeRelSize={20}
-        nodeColor={'white'}
+        // nodeColor={'white'}
         onNodeClick={handleClick}
         onBackgroundClick={onBackgroundClick}
         // linkThreeObject={linkThreeObject}

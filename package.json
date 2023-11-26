@@ -21,7 +21,8 @@
     "react-lazy-load-image-component": "^1.6.0",
     "react-router-dom": "^6.13.0",
     "sass": "^1.63.4",
-    "three": "^0.154.0"
+    "three": "^0.154.0",
+    "three-spritetext": "^1.8.1"
   },
   "devDependencies": {
     "@types/node": "^20.3.1",
