@@ -167,9 +167,9 @@ function Archive() {
         nodeAutoColorBy="group"
         nodeLabel={hoverContent}
         nodeThreeObject={nodeThreeObject}
-        nodeThreeObjectExtend={false} // whether node sphere replace or not
-        nodeOpacity={0.1}
-        nodeRelSize={2}
+        nodeThreeObjectExtend={true} // whether node sphere replace or not
+        nodeOpacity={0}
+        nodeRelSize={20}
         nodeColor={'white'}
         onNodeClick={handleClick}
         onBackgroundClick={onBackgroundClick}
