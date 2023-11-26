@@ -1,13 +1,16 @@
 // TODO: add color palette
+// const colorList = [
+//   '#7C05F2',
+//   '#F2B90C',
+//   '#F27405',
+//   '#00D656',
+//   '#044BD9',
+//   '#F21F0C',
+//   '#FFFFFF',
+//   '#FF00E7'
+// ]
 const colorList = [
-  '#7C05F2',
-  '#F2B90C',
-  '#F27405',
-  '#00D656',
-  '#044BD9',
-  '#F21F0C',
-  '#FFFFFF',
-  '#FF00E7'
+  '#FFFFFF'
 ]
 
 const createGraphData: InitialGraphData | any= (memoryList: any, tagList?: string[]) => {

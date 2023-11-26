@@ -59,11 +59,11 @@ function Archive() {
   }
   
   const nodeThreeObject = (node: any) => {
+    // TODO: node styling here
     const nodeEl = document.createElement('div');
-    // nodeEl.textContent = node.id;
-    nodeEl.style.color = 'white';
-    nodeEl.style.opacity = '0.3';
-
+    nodeEl.textContent = node.content;
+    nodeEl.className = styles.nodeEl;
+    
     return new CSS2DObject(nodeEl);
   }
   
@@ -114,7 +114,13 @@ function Archive() {
     ));
     
     // TODO: Geometry material styling here
-    const material = new THREE.MeshMatcapMaterial({side:THREE.DoubleSide, transparent: true, opacity: 0.02, color: targetGroup.color})
+    const material = new THREE.MeshMatcapMaterial({side:THREE.DoubleSide, transparent: true, opacity: 0, color: targetGroup.color})
+    // const material = new THREE.MeshPhysicalMaterial({transmission:1, thickness: 2, roughness: 0.5})
+    // const material = new THREE.MeshPhongMaterial( {
+    //   color: 0xaaaaaa, specular: 0xffffff, shininess: 100,
+    //   side: THREE.DoubleSide, vertexColors: true
+    // } );
+    
     let geometry = new THREE.BufferGeometry()
 
     const points:any = [];
@@ -159,17 +165,17 @@ function Archive() {
         extraRenderers={extraRenderers}
         graphData={graphData}
         nodeAutoColorBy="group"
-        nodeLabel={hoverContent} // TODO: hovered content
+        nodeLabel={hoverContent}
         nodeThreeObject={nodeThreeObject}
-        nodeThreeObjectExtend={true} // whether node sphere replace or not
-        nodeOpacity={0.2}
+        nodeThreeObjectExtend={false} // whether node sphere replace or not
+        nodeOpacity={0.1}
         nodeRelSize={2}
         nodeColor={'white'}
         onNodeClick={handleClick}
         onBackgroundClick={onBackgroundClick}
         linkThreeObject={linkThreeObject}
         linkPositionUpdate={linkPositionUpdate}
-        linkOpacity={0.02}
+        linkOpacity={0.15}
         linkVisibility={true}
         linkThreeObjectExtend={true}
         onNodeDragEnd={node => {
