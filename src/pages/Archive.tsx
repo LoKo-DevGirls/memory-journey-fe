@@ -22,8 +22,8 @@ function Archive() {
       try {
         const {data: response} = await axios.get('memory');
         // TODO: remove slice
-        // const data = createGraphData(response)
-        const data = createGraphData(response.slice(20, 45))
+        const data = createGraphData(response)
+        // const data = createGraphData(response.slice(20, 45))
 
 
         setGraphData(data)
