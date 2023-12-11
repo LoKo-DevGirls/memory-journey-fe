@@ -1,7 +1,7 @@
 @import './variables';
 
 .descSection {
-  color: white;
+  color: $hightlight-color;
   position: absolute;
   top: 50%;
   right: 50%;
@@ -10,10 +10,9 @@
   max-width: 50vw;
   overflow-y: auto;
 
-  background-color: rgba($color: white, $alpha: 0.4);
-  border: 2px solid rgba($color: white, $alpha: 0.6);
-  border-radius: 0.5rem;
+  background-color: rgba($color: $bg-color2, $alpha: 0.94);
   padding: 1rem 1.5rem;
+  z-index: 999;
 
   @media screen and (max-width: $breakpoint) {
     max-height: 60vh;
