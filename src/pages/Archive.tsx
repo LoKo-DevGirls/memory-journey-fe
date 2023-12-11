@@ -8,6 +8,7 @@ import styles from '../styles/Archive.module.scss';
 import axios from 'axios';
 import { createGraphData } from '../utils/createGraphData';
 import SpriteText from 'three-spritetext';
+import Close from '../assets/icon/close';
 
 const extraRenderers = [new CSS2DRenderer() as any];
 
@@ -107,6 +108,7 @@ function Archive() {
 
     return (
       <section className={`${styles.descSection}`}>
+        <button onClick={closeNodeDescriptionModal}><Close /></button>
         <p>{node.content}</p>
         <div className={styles.inputContainer}>
           <div className={styles.inputWrapper}>
@@ -133,11 +135,11 @@ function Archive() {
             </datalist>
           </div>
         </div>
-        <p className={styles.Keywords}>Keywords: 
+        <ul className={styles.keywords}><b>Keywords:</b> 
           {node.tags.map((i:any, index: any) => (
-            <span key={index}>{i}</span>
+            <li key={index}>{i}</li>
           ))}
-        </p>
+        </ul>
       </section>
     )
   }

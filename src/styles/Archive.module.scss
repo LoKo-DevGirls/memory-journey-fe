@@ -8,12 +8,21 @@
   transform: translate(50%, -50%);
   max-height: 80vh;
   max-width: 50vw;
-  overflow-y: auto;
 
-  background-color: rgba($color: $bg-color2, $alpha: 0.94);
-  padding: 1rem 1.5rem;
+  background-color: rgba($color: $bg-color2, $alpha: 0.95);
+  padding: 2rem 1.5rem;
   z-index: 999;
 
+  display: flex;
+  flex-direction: column;
+
+  p {
+    flex: 1;
+    overflow-y: auto;
+  }
+  b {
+    margin-right: 1rem;
+  }
   @media screen and (max-width: $breakpoint) {
     max-height: 60vh;
     max-width: 80vw;
@@ -24,6 +33,16 @@
     }
   }
 
+  
+  button {
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    background-color: white;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 2.5rem;
+  }
 }
 
 .inputContainer {
@@ -54,11 +73,18 @@ input[type="range"] {
   }
 }
 
-.Keywords {
+ul.keywords {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  span {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-height: 2.5rem;
+  overflow-y: auto;
+  align-items: flex-end;
+
+  li {
     margin: 0 0.5rem;
   }
 }
