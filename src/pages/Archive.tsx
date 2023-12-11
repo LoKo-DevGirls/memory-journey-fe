@@ -64,6 +64,8 @@ function Archive() {
     const nodeEl = document.createElement('div');
     nodeEl.textContent = node.content;
     nodeEl.className = styles.nodeEl;
+    nodeEl.style.pointerEvents= 'all';
+    nodeEl.addEventListener('click', event => handleClick(node))
     
     return new CSS2DObject(nodeEl);
   }
@@ -194,26 +196,22 @@ function Archive() {
         extraRenderers={extraRenderers}
         graphData={graphData}
         nodeAutoColorBy="group"
-        nodeLabel={hoverContent}
+        // nodeLabel={hoverContent}
         // nodeThreeObject={nodeSpriteText}
         nodeThreeObject={nodeThreeObject}
-        nodeThreeObjectExtend={true} // whether node sphere replace or not
-        nodeOpacity={0}
-        nodeRelSize={20}
-        // nodeColor={'white'}
+        // nodeThreeObjectExtend={false} // whether node sphere replace or not
         onNodeClick={handleClick}
         onBackgroundClick={onBackgroundClick}
-        // linkThreeObject={linkThreeObject}
-        // linkPositionUpdate={linkPositionUpdate}
-        linkOpacity={0.15}
+        linkOpacity={0.2}
         linkVisibility={true}
-        // linkThreeObjectExtend={true}
+        // linkThreeObject={linkThreeObject} // for plane geometry
+        // linkPositionUpdate={linkPositionUpdate} // for plane geometry
+        // linkThreeObjectExtend={true} // for plane geometry
         onNodeDragEnd={node => {
           node.fx = node.x;
           node.fy = node.y;
           node.fz = node.z;
         }}
-        // onNodeHover={onNodeHover}
       />
       <NodeDescription node={selectedNode}/>
     </div>
