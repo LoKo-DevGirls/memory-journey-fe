@@ -55,7 +55,7 @@ function Archive() {
     setSelectedNode(node)
   }, [fgRef]);
 
-  const onBackgroundClick = () => {
+  const closeNodeDescriptionModal = () => {
     setSelectedNode(null)
   }
   
@@ -98,9 +98,11 @@ function Archive() {
     return sprite;
   }
   
-  const NodeDescription = ({node}: any) => {
+  const NodeDescription = () => {
+    if (!selectedNode) return;
+    const node = selectedNode;
+
     return (
-      node &&
       <section className={`${styles.descSection}`}>
         <p>{node.content}</p>
         <div className={styles.inputContainer}>
@@ -201,7 +203,6 @@ function Archive() {
         nodeThreeObject={nodeThreeObject}
         // nodeThreeObjectExtend={false} // whether node sphere replace or not
         onNodeClick={handleClick}
-        onBackgroundClick={onBackgroundClick}
         linkOpacity={0.2}
         linkVisibility={true}
         // linkThreeObject={linkThreeObject} // for plane geometry
@@ -213,7 +214,7 @@ function Archive() {
           node.fz = node.z;
         }}
       />
-      <NodeDescription node={selectedNode}/>
+      <NodeDescription />
     </div>
   )
 }
