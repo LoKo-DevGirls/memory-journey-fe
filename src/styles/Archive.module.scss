@@ -1,5 +1,4 @@
-$breakpoint: 1080px;
-$font: 'Roboto';
+@import './variables';
 
 .descSection {
   color: white;
@@ -67,10 +66,17 @@ input[type="range"] {
 
 .nodeEl {
   opacity: 0.5;
-  color: white;
+  color: $hightlight-color;
   font-size: 14px;
   line-height: 16px;
   font-family: $font;
   width: 100rem;
   white-space: normal;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover, &.selected {
+    opacity: 1;
+    font-weight: 400;
+  }
 }

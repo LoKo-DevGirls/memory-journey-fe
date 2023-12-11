@@ -65,7 +65,10 @@ function Archive() {
     nodeEl.textContent = node.content;
     nodeEl.className = styles.nodeEl;
     nodeEl.style.pointerEvents= 'all';
-    nodeEl.addEventListener('click', event => handleClick(node))
+    nodeEl.addEventListener('click', event => {
+      handleClick(node)
+      nodeEl.classList.add(styles.selected)
+    })
     
     return new CSS2DObject(nodeEl);
   }
