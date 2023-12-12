@@ -4,6 +4,7 @@ import sampledata from '../dataset/sampledata.json';
 import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
 import * as THREE from 'three';
 import Nav from '../components/Nav';
+import Panel from '../components/Panel';
 import styles from '../styles/Archive.module.scss';
 import axios from 'axios';
 import { createGraphData } from '../utils/createGraphData';
@@ -16,6 +17,8 @@ function Archive() {
   const fgRef = useRef<any>();
   const [graphData, setGraphData] = useState<any>();
   const [selectedNode, setSelectedNode] = useState<any>();
+  const [selectedGroup, setSelectedGroup] = useState<any>();
+  const [highlightLinks, setHighlightLinks] = useState<any>();
   const [loading, setLoading] = useState<boolean>();
 
   useEffect(() => {
@@ -29,7 +32,7 @@ function Archive() {
 
 
         setGraphData(data)
-        
+
       } catch (error: any) {
         console.error(error.message);
       }
@@ -144,6 +147,34 @@ function Archive() {
     )
   }
 
+  const PanelContent = () => {
+    if (!graphData) return
+
+    const keywordsList = graphData.groups.filter((g:any) => g.links.length > 0).sort((a: any,b: any) => b.links.length - a.links.length )
+
+    return (
+      <section className={styles.panelSection}>
+        <ul>
+          {keywordsList.map((i: any) => (
+            <li key={i.keyword}>
+              <button onClick={() => handleKeywordClick(i)}>
+                {i.keyword} <span>{i.links.length}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  const handleKeywordClick = (keyword: any) => {
+    setHighlightLinks(keyword.links)
+    setSelectedGroup(keyword)
+  }
+  const resetSelectedGroup = () => {
+    setHighlightLinks(null)
+    setSelectedGroup(null)
+  }
   const getGeometryFromGroupId = (groupId: number, groupData: any, linksData: any) => {
     const targetGroup = groupData.filter((g: any) => g.groupId === groupId)[0];
     const { links } = targetGroup;
@@ -202,7 +233,6 @@ function Archive() {
         ref={fgRef}
         extraRenderers={extraRenderers}
         graphData={graphData}
-        nodeAutoColorBy="group"
         // nodeLabel={hoverContent}
         // nodeThreeObject={nodeSpriteText}
         nodeThreeObject={nodeThreeObject}
@@ -210,6 +240,8 @@ function Archive() {
         onNodeClick={handleClick}
         linkOpacity={0.2}
         linkVisibility={true}
+        linkColor={link => highlightLinks?.includes(link.linkId) ? selectedGroup?.color :'#fff'}
+        onBackgroundClick={resetSelectedGroup}
         // linkThreeObject={linkThreeObject} // for plane geometry
         // linkPositionUpdate={linkPositionUpdate} // for plane geometry
         // linkThreeObjectExtend={true} // for plane geometry
@@ -220,6 +252,11 @@ function Archive() {
         }}
       />
       <NodeDescription />
+      <Panel
+        onToggleClick={resetSelectedGroup}
+      >
+        <PanelContent />
+      </Panel>
     </div>
   )
 }
