@@ -16,6 +16,8 @@
     align-items: center;
     justify-content: space-between;
     background-color: rgba($color: $bg-color2, $alpha: 0.95);
+  }
+  button[aria-expanded="false"] {
     opacity: 0.8;
   }
   ul {

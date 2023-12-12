@@ -10,6 +10,7 @@ import axios from 'axios';
 import { createGraphData } from '../utils/createGraphData';
 import SpriteText from 'three-spritetext';
 import Close from '../assets/icon/close';
+import Circle from '../assets/icon/circle';
 
 const extraRenderers = [new CSS2DRenderer() as any];
 
@@ -158,7 +159,10 @@ function Archive() {
           {keywordsList.map((i: any) => (
             <li key={i.keyword}>
               <button onClick={() => handleKeywordClick(i)}>
-                {i.keyword} <span>{i.links.length}</span>
+                <Circle color={i.color} />
+                <p>
+                  {i.keyword} <span>{i.links.length}</span>
+                </p>
               </button>
             </li>
           ))}
