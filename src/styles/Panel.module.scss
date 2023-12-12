@@ -1,6 +1,39 @@
+@import './variables';
+
 .panel {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 1.5rem;
+  right: 1.5rem;
   z-index: 99;
+
+  width: 15rem;
+
+  border: 2px solid rgba($color: $hightlight-color, $alpha: 0.2);
+  border-radius: 0.2rem;
+
+  button[aria-expanded] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba($color: $bg-color2, $alpha: 0.95);
+    opacity: 0.8;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  > section {
+    max-height: 20rem;
+    overflow-y: auto;
+  }
+  button {
+    color: $hightlight-color;
+    font-size: 14px;
+    width: 100%;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
 }
