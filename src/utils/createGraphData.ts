@@ -1,17 +1,17 @@
 // TODO: add color palette
-// const colorList = [
-//   '#7C05F2',
-//   '#F2B90C',
-//   '#F27405',
-//   '#00D656',
-//   '#044BD9',
-//   '#F21F0C',
-//   '#FFFFFF',
-//   '#FF00E7'
-// ]
 const colorList = [
-  '#FFFFFF'
+  '#7C05F2',
+  '#044BD9',
+  '#00D656',
+  '#F27405',
+  '#F2B90C',
+  '#F21F0C',
+  '#FF00E7'
 ]
+const defaultColor = '#f2f2f2'
+// const colorList = [
+//   '#FFFFFF'
+// ]
 
 const createGraphData: InitialGraphData | any= (memoryList: any, tagList?: string[]) => {
   let result: any = {};
@@ -52,7 +52,8 @@ function generateLinksAndGroups(nodes: any, tagsList: any) {
     groupId: index,
     keyword: tag,
     links: [],
-    color: colorList[index % colorList.length]
+    // color: colorList[index % colorList.length]
+    color: defaultColor
   }));
 
   for (let i = 0; i < nodes.length; i++) {
@@ -81,6 +82,13 @@ function generateLinksAndGroups(nodes: any, tagsList: any) {
     }
   }
 
+  let groupCount = 0;
+  groups.forEach((g: any) => {
+    if (g.links.length > 5) {
+      g.color = colorList[groupCount % colorList.length]
+      groupCount++;
+    }
+  });
   return { links, groups };
 }
 
