@@ -131,16 +131,18 @@ ul.keywords {
 }
 
 .nodeEl {
-  opacity: 0.5;
+  opacity: 0.6;
   color: $hightlight-color;
-  font-size: 14px;
-  line-height: 16px;
   font-family: $font;
-  width: 100rem;
   white-space: normal;
   background-color: transparent;
   cursor: pointer;
-
+  width: 50vw;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.25rem;
+  text-align: center;
+  
   &:hover, &.selected {
     opacity: 1;
     font-weight: 400;
