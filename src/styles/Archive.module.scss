@@ -34,7 +34,7 @@
   }
 
   
-  button {
+  button.closeButton {
     position: absolute;
     top: -1rem;
     right: -1rem;
@@ -42,6 +42,15 @@
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 2.5rem;
+  }
+
+  .keywords {
+    p {
+      margin: 0;
+    }
+    button {
+      padding: 0;
+    }
   }
 }
 

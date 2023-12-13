@@ -112,7 +112,7 @@ function Archive() {
 
     return (
       <section className={`${styles.descSection}`}>
-        <button onClick={closeNodeDescriptionModal}><Close /></button>
+        <button onClick={closeNodeDescriptionModal} className={styles.closeButton}><Close /></button>
         <p>{node.content}</p>
         <div className={styles.inputContainer}>
           <div className={styles.inputWrapper}>
@@ -140,8 +140,14 @@ function Archive() {
           </div>
         </div>
         <ul className={styles.keywords}><b>Keywords:</b> 
-          {node.tags.map((i:any, index: any) => (
-            <li key={index}>{i}</li>
+          {node.tagGroups.map((i:any) => (
+            <li key={i.groupId}>
+              <button onClick={() => handleKeywordClick(i)}>
+                <p style={{color: i.color}}>
+                  {i.keyword}
+                </p>
+              </button>
+            </li>
           ))}
         </ul>
       </section>
@@ -180,10 +186,10 @@ function Archive() {
     setSelectedGroup(null)
   }
   const getGeometryFromGroupId = (groupId: number, groupData: any, linksData: any) => {
-    const targetGroup = groupData.filter((g: any) => g.groupId === groupId)[0];
+    const targetGroup = groupData.find((g: any) => g.groupId === groupId);
     const { links } = targetGroup;
     const linkObjectList = links.map((id: any) => (
-      linksData.filter((link: any) => link.linkId === id)[0]
+      linksData.find((link: any) => link.linkId === id)
     ));
     
     // TODO: Geometry material styling here
