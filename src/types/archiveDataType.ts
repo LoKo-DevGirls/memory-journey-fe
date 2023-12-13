@@ -6,6 +6,7 @@ interface NodeData {
   time: number;
   feeling: number;
   groupIds: number[];
+  tagGroups: GroupData[];
 }
 
 interface GroupData {

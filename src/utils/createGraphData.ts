@@ -28,10 +28,12 @@ const createGraphData: InitialGraphData | any= (memoryList: any, tagList?: strin
   const nodes = [...memoryList]
   nodes.forEach((i: any) => {
     i.groupIds = []
+    i.tagGroups = []
     i.tags.forEach((tag: string) => {
       const [group] = groups.filter((e:any) => e.keyword === tag)
       if (!i.groupIds.includes(group.groupId)) {
         i.groupIds.push(group.groupId)
+        i.tagGroups.push(group)
       }
     })
   })
