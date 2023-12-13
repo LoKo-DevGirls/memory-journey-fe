@@ -248,8 +248,9 @@ function Archive() {
         nodeThreeObject={nodeThreeObject}
         // nodeThreeObjectExtend={false} // whether node sphere replace or not
         onNodeClick={handleClick}
-        linkOpacity={0.2}
+        linkOpacity={0.5}
         linkVisibility={true}
+        // linkWidth={link => highlightLinks?.includes(link.linkId) ? 0.2 : 0.001}
         linkColor={link => highlightLinks?.includes(link.linkId) ? selectedGroup?.color :'#fff'}
         onBackgroundClick={resetSelectedGroup}
         // linkThreeObject={linkThreeObject} // for plane geometry
